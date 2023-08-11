@@ -26,4 +26,8 @@
   - [x] 주간회고록 작성
 
 - [2023-08-10 (목)](TIL/20230810.md)
+
   - [x] Dart 강의 4.0~4.10
+
+- [2023-08-11 (금)](dart/dictionary.dart)
+  - [x] Dart Code Challenge (Dictionary)
