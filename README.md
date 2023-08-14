@@ -2,13 +2,14 @@
 
 ## ⏰ 주간 회고록
 
-- [1주차](weeks/week1.md)
+- [Week 1](weeks/week1.md)
 
 <br>
 
 ## 📂 일일 스프린트 및 TIL
 
-### 1주차
+<details>
+<summary><b>Week 1</b></summary>
 
 - [2023-08-07 (월)](TIL/20230807.md)
 
@@ -31,3 +32,14 @@
 
 - [2023-08-11 (금)](dart/dictionary.dart)
   - [x] Dart Code Challenge (Dictionary)
+
+</details>
+
+<br>
+
+### Week2
+
+- [2023-08-14 (월)](TIL/20230814.md)
+
+  - [x] 플러터 강의 1.0~2.5
+  - [x] 플러터 퀴즈 풀기
