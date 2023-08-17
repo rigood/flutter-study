@@ -58,4 +58,4 @@
 - [2023-08-17 (목)](TIL/20230817.md)
 
   - [x] 플러터 강의 5.0~5.4
-  - [] [플러터 코드 챌린지 과제 (Pomodoro)](./pomodoro/README.md)
+  - [x] [플러터 코드 챌린지 과제 (Pomodoro)](./pomodoro/README.md)

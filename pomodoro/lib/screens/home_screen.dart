@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:pomodoro/widgets/app_title.dart';
+import 'package:pomodoro/widgets/reset_button.dart';
 import 'package:pomodoro/widgets/time_select_list.dart';
 import 'package:pomodoro/widgets/timer_box.dart';
 import 'package:pomodoro/widgets/play_pause_button.dart';
@@ -26,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   int selectedMinute = 25;
 
+  bool isInit = false;
   bool isRunning = false;
 
   static const working = 'working';
@@ -49,6 +51,9 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     setState(() {
+      if (!isInit) {
+        isInit = true;
+      }
       isRunning = true;
     });
   }
@@ -116,6 +121,24 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void resetTimer() {
+    if (!isInit) return;
+
+    if (current == working) {
+      workingTimer.cancel();
+      setState(() {
+        isRunning = false;
+        workingTime = selectedMinute * 60;
+      });
+    } else {
+      restTimer.cancel();
+      setState(() {
+        isRunning = false;
+        restTime = defaultRestTime;
+      });
+    }
+  }
+
   List<String> format(int seconds) {
     var duration = Duration(seconds: seconds);
     return duration
@@ -147,6 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
           PlayPauseButton(
               isRunning: isRunning,
               onPressed: isRunning ? pauseTimer : startTimer),
+          ResetButton(onTap: resetTimer),
           RoundGoalCount(
             round: round,
             goal: goal,

@@ -13,7 +13,7 @@ class PlayPauseButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        vertical: 40,
+        vertical: 20,
       ),
       child: Center(
         child: IconButton(

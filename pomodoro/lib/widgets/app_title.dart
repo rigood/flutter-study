@@ -9,7 +9,7 @@ class AppTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Padding(
       padding: EdgeInsets.symmetric(
-        vertical: 50,
+        vertical: 40,
         horizontal: 20,
       ),
       child: Text(
