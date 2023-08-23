@@ -4,6 +4,7 @@
 
 - [Week 1](weeks/week1.md)
 - [Week 2](weeks/week2.md)
+- [Week 3](weeks/week3.md)
 
 <br>
 
@@ -79,3 +80,8 @@
 - [2023-08-22 (화)](TIL/20230822.md)
 
   - [x] 틱톡클론 강의 4.3~4.9
+
+- [2023-08-23 (수)](TIL/20230823.md)
+
+  - [x] 코드챌린지 과제
+  - [x] [주간회고록 작성](weeks/week3.md)
