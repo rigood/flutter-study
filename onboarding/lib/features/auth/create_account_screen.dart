@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:onboarding/constants/sizes.dart';
 import 'package:onboarding/constants/gaps.dart';
 import 'package:onboarding/features/auth/customize_experience_screen.dart';
 import 'package:onboarding/widgets/app_logo.dart';
 import 'package:onboarding/widgets/page_title.dart';
 import 'package:onboarding/widgets/text_black.dart';
+import 'package:onboarding/features/auth/widgets/circle_icon.dart';
 
 class CreateAccountScreen extends StatefulWidget {
   const CreateAccountScreen({super.key});
@@ -336,20 +336,6 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   ),
                 )
               : null),
-    );
-  }
-}
-
-class CircleIcon extends StatelessWidget {
-  const CircleIcon({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return FaIcon(
-      FontAwesomeIcons.solidCircleCheck,
-      color: Theme.of(context).colorScheme.secondary,
     );
   }
 }

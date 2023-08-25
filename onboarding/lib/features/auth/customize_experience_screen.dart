@@ -7,7 +7,6 @@ import 'package:onboarding/widgets/app_logo.dart';
 import 'package:onboarding/widgets/bottom_button.dart';
 import 'package:onboarding/widgets/page_title.dart';
 import 'package:onboarding/widgets/text_black.dart';
-import 'package:onboarding/widgets/text_primary.dart';
 
 class CustomizeExperienceScreen extends StatefulWidget {
   final String username, email, birthday;
@@ -142,10 +141,18 @@ class _CustomizeScreenState extends State<CustomizeExperienceScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomButton(
-        text: "Next",
-        isActive: _isChecked,
-        onTap: _onNextTap,
+      bottomNavigationBar: BottomAppBar(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: Sizes.size20,
+            horizontal: Sizes.size40,
+          ),
+          child: BottomButton(
+            text: "Next",
+            isActive: _isChecked,
+            onTap: _onNextTap,
+          ),
+        ),
       ),
     );
   }

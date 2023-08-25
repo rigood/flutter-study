@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:onboarding/features/auth/confirmation_code_screen.dart';
+import 'package:onboarding/features/auth/create_account_screen.dart';
 import 'package:onboarding/features/auth/login_screen.dart';
 
 void main() {
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch().copyWith(
           background: Colors.white,
-          primary: const Color(0xff4e98e9),
+          primary: const Color(0xff3399FF),
           secondary: const Color(0xff66cc99),
         ),
         appBarTheme: const AppBarTheme(
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.white,
         ),
       ),
-      home: const LoginScreen(),
+      home: const ConfirmationCodeScreen(),
     );
   }
 }
