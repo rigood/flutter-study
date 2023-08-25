@@ -62,7 +62,8 @@
 
 <br>
 
-### Week3
+<details>
+<summary><b>Week 3</b></summary>
 
 - [2023-08-17 (목)](TIL/20230817.md)
 
@@ -81,11 +82,18 @@
 
   - [x] 틱톡클론 강의 4.3~4.9
 
-- [2023-08-23 (수)]
+- 2023-08-23 (수)
 
-  - [x] 코드챌린지 과제
+  - [x] [코드챌린지 과제 (onBoarding1)](./onboarding/README.md)
   - [x] [주간회고록 작성](weeks/week3.md)
 
-- [2023-08-25 (금)](TIL/20230825.md)
+</details>
 
-  - [x] 틱톡클론 강의 5.1~5.4
+<br>
+
+### Week4
+
+- 2023-08-25 (금)
+
+  - [x] [틱톡클론 강의 5.1~5.4](TIL/20230825.md)
+  - [x] [코드챌린지 과제 리팩토링 (onBoarding1)](./onboarding/README.md)
