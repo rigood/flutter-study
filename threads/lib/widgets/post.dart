@@ -19,6 +19,7 @@ class Post extends StatelessWidget {
     required this.replies,
     required this.likes,
     this.isLastPost = false,
+    required this.onEllipsisTap,
   });
 
   final String authorAvatar, authorName, readingTime;
@@ -27,6 +28,7 @@ class Post extends StatelessWidget {
   final int replies, likes;
   final ListOfImage repliesAvatarList;
   final bool? isLastPost;
+  final Function onEllipsisTap;
 
   @override
   Widget build(BuildContext context) {
@@ -83,9 +85,12 @@ class Post extends StatelessWidget {
                               ),
                             ),
                             Gaps.h12,
-                            const FaIcon(
-                              FontAwesomeIcons.ellipsis,
-                              size: 16,
+                            GestureDetector(
+                              onTap: () => onEllipsisTap(),
+                              child: const FaIcon(
+                                FontAwesomeIcons.ellipsis,
+                                size: 16,
+                              ),
                             ),
                           ],
                         ),

@@ -64,7 +64,7 @@
 
 ### 😊 새롭게 알게 된 것
 
-#### 틱톡클론 section 5
+#### 틱톡클론 #5 OnBoarding
 
 - `collection for, collection if`를 활용하여 children에서 위젯을 렌더링 하는 방법
 - flex-wrap: wrap에 해당하는 `Wrap 위젯`
@@ -74,7 +74,7 @@
 - `TabBarView, TabPageSelector`로 탭 화면, 인디케이터 만들기
 - `AnimatedCrossFade`로 두 컴포넌트 간에 fade in, out 효과 주기
 
-#### 틱톡클론 section 6
+#### 틱톡클론 #6 Tab Navigation
 
 - `Navigator.pushAndRemoveUntil`로 화면 푸쉬할 때 이전화면 제거하기
 - bottomNavigationBar에 사용되는 위젯
@@ -85,7 +85,7 @@
 - 탭 화면 전환 시에도 state를 유지하려면 `Offstage 위젯`을 사용하여 화면을 숨기는 방법 사용
 - `Stack 위젯`을 사용하여 위젯을 겹칠 수 있음, 자식 위젯으로는 Stack의 크기를 결정하며 기준점이 되는 Container가 있어야 하고, 이 Container를 기준으로 `Positioned 위젯`으로 offset값을 조절하여 배치
 
-#### 틱톡클론 section 8
+#### 틱톡클론 #8 Comments
 
 - `showModalBottomSheet`로 하단시트를 불러올 수 있음
 - Future를 반환하므로 async-await으로 하단시트를 불러온 후 실행할 동작을 설정할 수 있음

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:threads/constants/sizes.dart';
+import 'package:threads/widgets/bottom_sheet.dart';
 import 'package:threads/widgets/post.dart';
 
 class PostScreen extends StatelessWidget {
@@ -30,6 +31,16 @@ class PostScreen extends StatelessWidget {
     },
   ];
 
+  void _onEllipsisTap(context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => const CustomBottomSheet(),
+      backgroundColor: Colors.transparent,
+      barrierColor: Colors.black.withOpacity(0.75),
+      isScrollControlled: true,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -47,6 +58,7 @@ class PostScreen extends StatelessWidget {
             repliesAvatarList: imageList3,
             replies: 36,
             likes: 391,
+            onEllipsisTap: () => _onEllipsisTap(context),
           ),
           Post(
             authorAvatar: "assets/images/3.png",
@@ -57,6 +69,7 @@ class PostScreen extends StatelessWidget {
             repliesAvatarList: imageList2,
             replies: 55,
             likes: 185,
+            onEllipsisTap: () => _onEllipsisTap(context),
           ),
           Post(
             authorAvatar: "assets/images/logo.png",
@@ -67,6 +80,7 @@ class PostScreen extends StatelessWidget {
             replies: 99,
             likes: 999,
             isLastPost: true,
+            onEllipsisTap: () => _onEllipsisTap(context),
           ),
         ],
       ),
