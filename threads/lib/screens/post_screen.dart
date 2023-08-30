@@ -1,0 +1,95 @@
+import 'package:flutter/material.dart';
+import 'package:threads/constants/sizes.dart';
+import 'package:threads/widgets/post.dart';
+
+class PostScreen extends StatelessWidget {
+  PostScreen({super.key});
+
+  final imageList1 = [
+    {"img": "assets/images/blue.gif"}
+  ];
+
+  final imageList2 = [
+    {
+      "img": "assets/images/1.jpg",
+    },
+    {
+      "img": "assets/images/2.jpg",
+    },
+  ];
+
+  final imageList3 = [
+    {
+      "img": "assets/images/1.jpg",
+    },
+    {
+      "img": "assets/images/2.jpg",
+    },
+    {
+      "img": "assets/images/3.png",
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Logo(),
+          Post(
+            authorAvatar: "assets/images/cocomong.jpg",
+            authorName: "Cocomong",
+            readingTime: "6m",
+            postText: "I like his songs.",
+            imageList: imageList2,
+            repliesAvatarList: imageList3,
+            replies: 36,
+            likes: 391,
+          ),
+          Post(
+            authorAvatar: "assets/images/3.png",
+            authorName: "Jin",
+            readingTime: "1m",
+            postText: "Look at him kkkk",
+            imageList: imageList1,
+            repliesAvatarList: imageList2,
+            replies: 55,
+            likes: 185,
+          ),
+          Post(
+            authorAvatar: "assets/images/logo.png",
+            authorName: "Threads",
+            readingTime: "1m",
+            postText: "Welcome to Threads",
+            repliesAvatarList: imageList3,
+            replies: 99,
+            likes: 999,
+            isLastPost: true,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Logo extends StatelessWidget {
+  const Logo({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.only(
+        top: 50,
+        bottom: 20,
+      ),
+      child: Image(
+        image: AssetImage('assets/images/logo.png'),
+        width: Sizes.size32,
+      ),
+    );
+  }
+}
