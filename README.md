@@ -98,6 +98,19 @@
   - [x] [틱톡클론 강의 5.1~5.4](TIL/20230825.md)
   - [x] [코드챌린지 과제 리팩토링 (onBoarding1)](./onboarding/README.md)
 
+- 2023-08-26 (토)
+
+  - [x] [코드챌린지 과제 (onBoarding2)](./onboarding/README.md)
+
 - 2023-08-28 (월)
 
   - [x] [틱톡클론 강의 6.0~6.8](TIL/20230828.md)
+
+- 2023-08-29 (화)
+
+  - [x] [코드챌린지 과제 (Navigation Time)](./threads/README.md)
+
+- 2023-08-30 (수)
+
+  - [x] [틱톡클론 강의 8.0~8.4](./TIL/20230830.md)
+  - [x] [4주차 주간회고록 작성](./weeks/week4.md)
