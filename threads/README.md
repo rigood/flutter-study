@@ -26,3 +26,18 @@
   - 하단 시트에는 Unfollow, Mute, Hide, Report 버튼 존재
   - Report 버튼 클릭 시 하단 시트 내 다른 화면으로 이동
   - Report 화면에는 헤더와 신고 항목 목록이 존재
+
+</br>
+
+# Code Challenge [Write Screen]
+
+- [🚀 녹화 영상 바로가기](https://imgur.com/a/1ooo7hN)
+
+  <img src="./demo3.gif"  width="300"/>
+
+- Requirements
+
+  - 하단 Navigation의 3번째 아이콘 버튼 클릭 시 Write 화면으로 이동
+  - Write 화면은 화면 하단에서 올라와야함
+  - Cancel 버튼을 누르면 뒤로 돌아가기
+  - 사용자가 입력창에 글을 입력하면 Post 버튼 활성화

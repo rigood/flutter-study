@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/constants/sizes.dart';
 import 'package:threads/screens/post_screen.dart';
+import 'package:threads/screens/write_screen.dart';
 import 'package:threads/widgets/nav_tab.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,10 +24,20 @@ class _HomeScreenState extends State<HomeScreen> {
   final screens = [
     PostScreen(),
     const Placeholder(text: "Search"),
-    const Placeholder(text: "Write Thread"),
+    PostScreen(),
     const Placeholder(text: "Notifications"),
     const Placeholder(text: "Profile"),
   ];
+
+  void _onWriteTap() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => const WriteScreen(),
+      backgroundColor: Colors.transparent,
+      barrierColor: Colors.black.withOpacity(0.75),
+      isScrollControlled: true,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   NavTab(
                     icon: FontAwesomeIcons.penToSquare,
                     isSelected: _selectedIndex == 2,
-                    onTap: () => _onTap(2),
+                    onTap: _onWriteTap,
                   ),
                   NavTab(
                     icon: FontAwesomeIcons.heart,
