@@ -1,6 +1,6 @@
 # Code Challenge [Navigation Time]
 
-- [🚀 녹화 영상 바로가기](https://imgur.com/a/wQPSKNL)
+- [🚀 구현 영상](https://imgur.com/a/wQPSKNL)
 
 - Requirements
 
@@ -16,7 +16,7 @@
 
 # Code Challenge [Bottom Sheet]
 
-- [🚀 녹화 영상 바로가기](https://imgur.com/a/wvrnTi1)
+- [🚀 구현 영상](https://imgur.com/a/wvrnTi1)
 
   <img src="./demo2.gif"  width="300"/>
 
@@ -31,7 +31,7 @@
 
 # Code Challenge [Write Screen]
 
-- [🚀 녹화 영상 바로가기](https://imgur.com/a/1ooo7hN)
+- [🚀 구현 영상](https://imgur.com/a/1ooo7hN)
 
   <img src="./demo3.gif"  width="300"/>
 
@@ -41,3 +41,16 @@
   - Write 화면은 화면 하단에서 올라와야함
   - Cancel 버튼을 누르면 뒤로 돌아가기
   - 사용자가 입력창에 글을 입력하면 Post 버튼 활성화
+
+</br>
+
+# Code Challenge [Search & Acitivity]
+
+- [🚀 구현 영상](https://imgur.com/a/C9yavyP)
+
+  <img src="./demo4.gif"  width="300"/>
+
+- Requirements
+
+  - CupertinoSearchTextField, ListTitle, TabBar 사용하기
+  - 최대한 주어진 스크린샷과 비슷하게 클론코딩 하기

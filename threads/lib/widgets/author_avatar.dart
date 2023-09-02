@@ -5,33 +5,39 @@ class AuthorAvatar extends StatelessWidget {
   const AuthorAvatar({
     super.key,
     required this.authorAvatar,
+    this.avatarRadius = 20,
+    this.icon = FontAwesomeIcons.plus,
+    this.iconBackgroundColor = Colors.black,
   });
 
   final String authorAvatar;
+  final double? avatarRadius;
+  final IconData? icon;
+  final Color? iconBackgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         CircleAvatar(
-          radius: 20,
+          radius: avatarRadius ?? 20,
           backgroundImage: AssetImage(authorAvatar),
         ),
         Positioned(
-          bottom: -2,
-          right: -2,
+          bottom: -3,
+          right: -3,
           child: Container(
             padding: const EdgeInsets.all(3),
             decoration: BoxDecoration(
-              color: Colors.black,
+              color: iconBackgroundColor,
               borderRadius: BorderRadius.circular(50),
               border: Border.all(
                 color: Colors.white,
                 width: 2,
               ),
             ),
-            child: const FaIcon(
-              FontAwesomeIcons.plus,
+            child: FaIcon(
+              icon,
               size: 10,
               color: Colors.white,
             ),

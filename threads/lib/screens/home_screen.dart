@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/constants/sizes.dart';
 import 'package:threads/screens/post_screen.dart';
+import 'package:threads/screens/search_screen.dart';
 import 'package:threads/screens/write_screen.dart';
+import 'package:threads/screens/activity_screen.dart';
 import 'package:threads/widgets/nav_tab.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,9 +25,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final screens = [
     PostScreen(),
-    const Placeholder(text: "Search"),
+    const SearchScreen(),
     PostScreen(),
-    const Placeholder(text: "Notifications"),
+    const ActivityScreen(),
     const Placeholder(text: "Profile"),
   ];
 

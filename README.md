@@ -91,7 +91,8 @@
 
 <br>
 
-### Week4
+<details>
+<summary><b>Week 4</b></summary>
 
 - 2023-08-25 (금)
 
@@ -115,3 +116,15 @@
   - [x] [틱톡클론 강의 8.0~8.4](./TIL/20230830.md)
   - [x] [4주차 주간회고록 작성](./weeks/week4.md)
   - [x] [코드챌린지 과제 (Bottom Sheet)](./threads/README.md/#code-challenge-bottom-sheet)
+
+</details>
+
+### Week5
+
+- 2023-08-31 (목)
+
+  - [x] [코드챌린지 과제 (Write Screen)](./threads/README.md/#code-challenge-write-screen)
+
+- 2023-09-02 (토)
+
+  - [x] [코드챌린지 과제 (Search & Activity)](./threads/README.md/#code-challenge-search--acitivity)
