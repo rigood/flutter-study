@@ -5,6 +5,7 @@
 - [Week 1](weeks/week1.md)
 - [Week 2](weeks/week2.md)
 - [Week 3](weeks/week3.md)
+- [Week 4](weeks/week4.md)
 
 <br>
 
@@ -128,3 +129,8 @@
 - 2023-09-02 (토)
 
   - [x] [코드챌린지 과제 (Search & Activity)](./threads/README.md/#code-challenge-search--acitivity)
+
+- 2023-09-04 (월)
+
+  - [x] [틱톡클론 강의 12 user profile](./TIL/tiktok_12_user_profile.md)
+  - [x] [틱톡클론 강의 13 settings ](./TIL/tiktok_13_settings.md)

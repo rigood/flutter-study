@@ -1,7 +1,5 @@
 # Code Challenge [Navigation Time]
 
-- [🚀 구현 영상](https://imgur.com/a/wQPSKNL)
-
 - Requirements
 
   - Home Screen: 스크롤 가능한 글 목록
@@ -12,13 +10,11 @@
     - 탭 아이콘 색상 (회색 -> 선택 시 검은색)
     - Home Screen 이외 화면은 Placeholder 사용 가능
 
+- [🚀 구현 영상](https://imgur.com/a/wQPSKNL)
+
 </br>
 
 # Code Challenge [Bottom Sheet]
-
-- [🚀 구현 영상](https://imgur.com/a/wvrnTi1)
-
-  <img src="./demo2.gif"  width="300"/>
 
 - Requirements
 
@@ -27,13 +23,13 @@
   - Report 버튼 클릭 시 하단 시트 내 다른 화면으로 이동
   - Report 화면에는 헤더와 신고 항목 목록이 존재
 
+- [🚀 구현 영상](https://imgur.com/a/wvrnTi1)
+
+  <img src="./demo2.gif"  width="300"/>
+
 </br>
 
 # Code Challenge [Write Screen]
-
-- [🚀 구현 영상](https://imgur.com/a/1ooo7hN)
-
-  <img src="./demo3.gif"  width="300"/>
 
 - Requirements
 
@@ -42,15 +38,19 @@
   - Cancel 버튼을 누르면 뒤로 돌아가기
   - 사용자가 입력창에 글을 입력하면 Post 버튼 활성화
 
+- [🚀 구현 영상](https://imgur.com/a/1ooo7hN)
+
+  <img src="./demo3.gif"  width="300"/>
+
 </br>
 
 # Code Challenge [Search & Acitivity]
-
-- [🚀 구현 영상](https://imgur.com/a/C9yavyP)
-
-  <img src="./demo4.gif"  width="300"/>
 
 - Requirements
 
   - CupertinoSearchTextField, ListTitle, TabBar 사용하기
   - 최대한 주어진 스크린샷과 비슷하게 클론코딩 하기
+
+- [🚀 구현 영상](https://imgur.com/a/C9yavyP)
+
+  <img src="./demo4.gif"  width="300"/>
