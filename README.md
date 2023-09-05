@@ -134,3 +134,7 @@
 
   - [x] [틱톡클론 강의 12 user profile](./TIL/tiktok_12_user_profile.md)
   - [x] [틱톡클론 강의 13 settings ](./TIL/tiktok_13_settings.md)
+
+- 2023-09-05 (화)
+
+  - [x] [코드챌린지 과제 (Profile and Settings)](./threads/README.md/#code-challenge-profile-and-settings)

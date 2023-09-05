@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/constants/sizes.dart';
 import 'package:threads/screens/post_screen.dart';
+import 'package:threads/screens/profile_screen.dart';
 import 'package:threads/screens/search_screen.dart';
 import 'package:threads/screens/write_screen.dart';
 import 'package:threads/screens/activity_screen.dart';
@@ -28,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const SearchScreen(),
     PostScreen(),
     const ActivityScreen(),
-    const Placeholder(text: "Profile"),
+    const ProfileScreen(),
   ];
 
   void _onWriteTap() {
@@ -44,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         body: screens[_selectedIndex],
         bottomNavigationBar: BottomAppBar(
             elevation: 0,

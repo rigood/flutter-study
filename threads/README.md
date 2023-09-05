@@ -54,3 +54,25 @@
 - [🚀 구현 영상](https://imgur.com/a/C9yavyP)
 
   <img src="./demo4.gif"  width="300"/>
+
+</br>
+
+# Code Challenge [Profile and Settings]
+
+- Requirements
+
+  - Profile Screen
+    - 헤더와 2개의 탭(Threads, Replies)
+    - 오른쪽 상단 아이콘 클릭 시 Settings 화면으로 이동
+    - CustomScrollView, SliverAppBar, SliverPersistentHeader 사용
+  - Settings Screen
+    - ListTile 사용
+    - Privacy 타일 클릭 시 Privacy 화면으로 이동
+    - 로그아웃 버튼 클릭 시 플랫폼에 맞는 로딩 인디케이터 표시
+    - iOS는 CupertinoAlertDialog 사용, Android는 AlertDialog 사용
+  - Privacy Screen
+    - SwitchListTile 사용
+
+- [🚀 구현 영상](https://imgur.com/a/cNVHdHX)
+
+  <img src="./demo5.gif"  width="300"/>
