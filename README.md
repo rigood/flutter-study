@@ -6,6 +6,7 @@
 - [Week 2](weeks/week2.md)
 - [Week 3](weeks/week3.md)
 - [Week 4](weeks/week4.md)
+- [Week 5](weeks/week5.md)
 
 <br>
 
@@ -120,7 +121,10 @@
 
 </details>
 
-### Week5
+<br>
+
+<details>
+<summary><b>Week 5</b></summary>
 
 - 2023-08-31 (목)
 
@@ -138,3 +142,12 @@
 - 2023-09-05 (화)
 
   - [x] [코드챌린지 과제 (Profile and Settings)](./threads/README.md/#code-challenge-profile-and-settings)
+
+</details>
+
+### Week6
+
+- 2023-09-07 (목)
+
+  - [x] [5주차 주간회고록 작성](./weeks/week5.md)
+  - [x] [틱톡클론 강의 19 video recording](./TIL/tiktok_19_video_recording.md)
