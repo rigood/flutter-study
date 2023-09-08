@@ -1,6 +1,9 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:threads/constants/gaps.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:threads/screens/camera_screen.dart';
 
 class WriteScreen extends StatefulWidget {
   const WriteScreen({super.key});
@@ -11,23 +14,26 @@ class WriteScreen extends StatefulWidget {
 
 class _WriteScreenState extends State<WriteScreen> {
   String _thread = "";
+  String _imgPath = "";
+  bool _hasImage = false;
 
-  final TextEditingController _threadController = TextEditingController();
+  final TextEditingController _threadTextEditingController =
+      TextEditingController();
 
   @override
   void initState() {
     super.initState();
 
-    _threadController.addListener(() {
+    _threadTextEditingController.addListener(() {
       setState(() {
-        _thread = _threadController.text;
+        _thread = _threadTextEditingController.text;
       });
     });
   }
 
   @override
   void dispose() {
-    _threadController.dispose();
+    _threadTextEditingController.dispose();
     super.dispose();
   }
 
@@ -39,6 +45,37 @@ class _WriteScreenState extends State<WriteScreen> {
     Navigator.of(context).pop();
   }
 
+  Future<void> _onAttachmentTap() async {
+    final data = await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const CameraScreen(),
+      ),
+    );
+
+    if (data["shouldOpenImagePicker"]) {
+      final picture = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+      );
+
+      if (picture == null) return;
+
+      _imgPath = picture.path;
+      _hasImage = true;
+    } else {
+      _imgPath = data["imgPath"];
+      _hasImage = true;
+    }
+
+    setState(() {});
+  }
+
+  void _removeImage() {
+    setState(() {
+      _imgPath = "";
+      _hasImage = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -46,8 +83,10 @@ class _WriteScreenState extends State<WriteScreen> {
     return Container(
       height: MediaQuery.of(context).size.height * 0.9,
       clipBehavior: Clip.hardEdge,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(12),
+        ),
       ),
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -85,94 +124,142 @@ class _WriteScreenState extends State<WriteScreen> {
             ),
           ),
         ),
-        body: Stack(
-          children: [
-            GestureDetector(
-              onTap: _closeKeyboard,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 15,
-                  left: 15,
-                  right: 15,
-                  bottom: 70,
-                ),
-                child: Row(
-                  children: [
-                    const Column(
+        body: GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onTap: _closeKeyboard,
+          child: Stack(
+            children: [
+              const Row(
+                children: [
+                  Column(
+                    children: [],
+                  )
+                ],
+              ),
+              SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    top: 15,
+                    left: 15,
+                    right: 15,
+                    bottom: 48,
+                  ),
+                  child: IntrinsicHeight(
+                    child: Row(
                       children: [
-                        CircleAvatar(
-                          radius: 17,
-                          backgroundColor: Colors.grey,
-                          child: CircleAvatar(
-                            radius: 16,
-                            backgroundImage:
-                                AssetImage("assets/images/cocomong.jpg"),
-                          ),
-                        ),
-                        Gaps.v5,
-                        SizedBox(
-                          height: 60,
-                          child: VerticalDivider(
-                            color: Colors.grey,
-                          ),
-                        ),
-                        Gaps.v5,
-                        Opacity(
-                          opacity: 0.3,
-                          child: CircleAvatar(
-                            radius: 9,
-                            backgroundColor: Colors.grey,
-                            child: CircleAvatar(
-                              radius: 8,
-                              backgroundImage:
-                                  AssetImage("assets/images/cocomong.jpg"),
+                        const Column(
+                          children: [
+                            CircleAvatar(
+                              radius: 17,
+                              backgroundColor: Colors.grey,
+                              child: CircleAvatar(
+                                radius: 16,
+                                backgroundImage:
+                                    AssetImage("assets/images/cocomong.jpg"),
+                              ),
                             ),
+                            Gaps.v5,
+                            Expanded(
+                              child: VerticalDivider(
+                                color: Colors.grey,
+                              ),
+                            ),
+                            Gaps.v5,
+                            Opacity(
+                              opacity: 0.3,
+                              child: CircleAvatar(
+                                radius: 9,
+                                backgroundColor: Colors.grey,
+                                child: CircleAvatar(
+                                  radius: 8,
+                                  backgroundImage:
+                                      AssetImage("assets/images/cocomong.jpg"),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Gaps.h10,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "rigood",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              TextField(
+                                minLines: null,
+                                maxLines: null,
+                                controller: _threadTextEditingController,
+                                decoration: const InputDecoration(
+                                  hintText: "Start a thread...",
+                                  border: InputBorder.none,
+                                  isDense: true,
+                                  contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10,
+                                  ),
+                                ),
+                              ),
+                              if (_hasImage && _imgPath != "")
+                                Stack(
+                                  children: [
+                                    Container(
+                                      width: double.infinity,
+                                      height: 200,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.grey.shade300,
+                                        ),
+                                        borderRadius: BorderRadius.circular(5),
+                                        image: DecorationImage(
+                                          image: FileImage(
+                                            File(_imgPath),
+                                          ),
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.center,
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned(
+                                      top: 5,
+                                      right: 5,
+                                      child: IconButton(
+                                        onPressed: _removeImage,
+                                        icon: FaIcon(
+                                          FontAwesomeIcons.solidCircleXmark,
+                                          color: Colors.black.withOpacity(0.5),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              if (_hasImage && _imgPath != "") Gaps.v10,
+                              IconButton(
+                                onPressed: _onAttachmentTap,
+                                padding: EdgeInsets.zero,
+                                constraints: const BoxConstraints(),
+                                icon: const FaIcon(
+                                  FontAwesomeIcons.paperclip,
+                                  color: Colors.grey,
+                                  size: 18,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                    Gaps.h10,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Jane_mobbin",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 200,
-                          child: TextField(
-                            minLines: null,
-                            maxLines: null,
-                            controller: _threadController,
-                            decoration: const InputDecoration(
-                              hintText: "Start a thread...",
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                        const FaIcon(
-                          FontAwesomeIcons.paperclip,
-                          color: Colors.grey,
-                          size: 18,
-                        ),
-                      ],
-                    ),
-                  ],
+                  ),
                 ),
               ),
-            ),
-            Positioned(
-              bottom: 0,
-              width: size.width,
-              child: BottomAppBar(
-                  elevation: 0,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 5,
-                    ),
+              Positioned(
+                bottom: 0,
+                width: size.width,
+                child: BottomAppBar(
+                    elevation: 0,
                     child: Row(
                       children: [
                         const Expanded(
@@ -202,10 +289,10 @@ class _WriteScreenState extends State<WriteScreen> {
                           ),
                         )
                       ],
-                    ),
-                  )),
-            ),
-          ],
+                    )),
+              ),
+            ],
+          ),
         ),
       ),
     );

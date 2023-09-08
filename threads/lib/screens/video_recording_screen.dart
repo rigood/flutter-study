@@ -1,8 +1,10 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:threads/constants/gaps.dart';
+import 'package:threads/screens/video_preveiw_screen.dart';
 
 class VideoRecordingScreen extends StatefulWidget {
   const VideoRecordingScreen({super.key});
@@ -67,6 +69,7 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
     );
 
     await _cameraController.initialize();
+    await _cameraController.prepareForVideoRecording();
 
     _flashMode = _cameraController.value.flashMode;
 
@@ -111,6 +114,8 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
 
   @override
   void dispose() {
+    _progressnAnimationController.dispose();
+    _recordingButtonAnimationController.dispose();
     _cameraController.dispose();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
@@ -145,14 +150,52 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
     }
   }
 
-  void _startRecording(TapUpDetails _) {
+  Future<void> _startRecording(TapUpDetails _) async {
+    if (_cameraController.value.isRecordingVideo) return;
+
+    await _cameraController.startVideoRecording();
+
     _recordingButtonAnimationController.forward();
     _progressnAnimationController.forward();
   }
 
-  void _stopRecording() {
+  Future<void> _stopRecording() async {
+    if (!_cameraController.value.isRecordingVideo) return;
+
     _recordingButtonAnimationController.reverse();
     _progressnAnimationController.reset();
+
+    final video = await _cameraController.stopVideoRecording();
+
+    if (!mounted) return;
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => VideoPreviewScreen(
+          video: video,
+          isPicked: false,
+        ),
+      ),
+    );
+  }
+
+  Future<void> _onPickVideoPressed() async {
+    final video = await ImagePicker().pickVideo(
+      source: ImageSource.gallery,
+    );
+
+    if (video == null) return;
+
+    if (!mounted) return;
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => VideoPreviewScreen(
+          video: video,
+          isPicked: true,
+        ),
+      ),
+    );
   }
 
   @override
@@ -234,35 +277,53 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
                     ),
                   ),
                   Positioned(
+                    width: MediaQuery.of(context).size.width,
                     bottom: 40,
-                    child: GestureDetector(
-                      onTapUp: _startRecording,
-                      onTapDown: (tapDownDetails) => _stopRecording(),
-                      child: ScaleTransition(
-                        scale: _recordingButtonAnimation,
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            SizedBox(
-                              width: 95,
-                              height: 95,
-                              child: CircularProgressIndicator(
-                                color: Colors.red,
-                                strokeWidth: 6,
-                                value: _progressnAnimationController.value,
-                              ),
+                    child: Row(
+                      children: [
+                        const Spacer(),
+                        GestureDetector(
+                          onTapUp: _startRecording,
+                          onTapDown: (tapDownDetails) => _stopRecording(),
+                          child: ScaleTransition(
+                            scale: _recordingButtonAnimation,
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                SizedBox(
+                                  width: 95,
+                                  height: 95,
+                                  child: CircularProgressIndicator(
+                                    color: Colors.red,
+                                    strokeWidth: 6,
+                                    value: _progressnAnimationController.value,
+                                  ),
+                                ),
+                                Container(
+                                  width: 80,
+                                  height: 80,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.red,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Container(
-                              width: 80,
-                              height: 80,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.red,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
+                        Expanded(
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: IconButton(
+                              onPressed: _onPickVideoPressed,
+                              icon: const FaIcon(
+                                FontAwesomeIcons.image,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ],

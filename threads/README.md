@@ -76,3 +76,17 @@
 - [🚀 구현 영상](https://imgur.com/a/cNVHdHX)
 
   <img src="./demo5.gif"  width="300"/>
+
+</br>
+
+# Code Challenge [Photos]
+
+- Requirements
+
+  - Write Screen
+    - 첨부파일 아이콘 클릭 시 Camera 화면으로 이동
+  - Camera Screen
+    - 사진을 찍거나 갤러리에서 사진 선택
+    - 촬영한 사진 또는 선택한 사진이 첨부된 Write 화면으로 이동
+
+- [🚀 구현 영상](https://imgur.com/a/8jAz4Yu)

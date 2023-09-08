@@ -151,3 +151,7 @@
 
   - [x] [5주차 주간회고록 작성](./weeks/week5.md)
   - [x] [틱톡클론 강의 19 video recording](./TIL/tiktok_19_video_recording.md)
+
+- 2023-09-08 (금)
+
+  - [x] [코드챌린지 과제 (Photos)](./threads/README.md/#code-challenge-photos)
