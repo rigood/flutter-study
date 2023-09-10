@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/constants/gaps.dart';
+import 'package:threads/constants/utils.dart';
 import 'package:threads/screens/settings_screen.dart';
 import 'package:threads/widgets/post.dart';
 import 'package:threads/widgets/profile_tab_bar.dart';
@@ -39,8 +40,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           return [
             SliverAppBar(
               toolbarHeight: 50,
-              foregroundColor: Colors.black,
-              backgroundColor: Colors.white,
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -98,7 +97,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     horizontal: 10,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: Colors.grey.shade100,
+                                    color: isDarkMode(context)
+                                        ? Colors.grey.shade900
+                                        : Colors.grey.shade100,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: const Text(

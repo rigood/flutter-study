@@ -155,3 +155,7 @@
 - 2023-09-08 (금)
 
   - [x] [코드챌린지 과제 (Photos)](./threads/README.md/#code-challenge-photos)
+
+- 2023-09-10 (일)
+
+  - [x] [코드챌린지 과제 (Dark mode)](./threads/README.md/#code-challenge-dark-mode)

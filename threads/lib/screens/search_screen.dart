@@ -18,7 +18,6 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
         elevation: 0,
         toolbarHeight: 100,
         title: Column(
@@ -27,7 +26,6 @@ class _SearchScreenState extends State<SearchScreen> {
             const Text(
               "Search",
               style: TextStyle(
-                color: Colors.black,
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
               ),

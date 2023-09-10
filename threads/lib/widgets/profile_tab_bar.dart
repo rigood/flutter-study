@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:threads/constants/utils.dart';
 
 class ProfileTabBar extends SliverPersistentHeaderDelegate {
   @override
@@ -6,16 +7,15 @@ class ProfileTabBar extends SliverPersistentHeaderDelegate {
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
         border: Border(
           bottom: BorderSide(
             color: Colors.grey.shade200,
           ),
         ),
       ),
-      child: const TabBar(
+      child: TabBar(
         indicatorColor: Colors.black,
-        labelPadding: EdgeInsets.symmetric(
+        labelPadding: const EdgeInsets.symmetric(
           vertical: 10,
         ),
         unselectedLabelColor: Colors.grey,
@@ -23,13 +23,13 @@ class ProfileTabBar extends SliverPersistentHeaderDelegate {
           Text(
             "Threads",
             style: TextStyle(
-              color: Colors.black,
+              color: isDarkMode(context) ? Colors.white : Colors.black,
             ),
           ),
           Text(
             "Replies",
             style: TextStyle(
-              color: Colors.black,
+              color: isDarkMode(context) ? Colors.white : Colors.black,
             ),
           ),
         ],

@@ -45,46 +45,47 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: screens[_selectedIndex],
-        bottomNavigationBar: BottomAppBar(
-            elevation: 0,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: Sizes.size16,
-                horizontal: Sizes.size24,
+      body: screens[_selectedIndex],
+      bottomNavigationBar: BottomAppBar(
+        elevation: 0,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: Sizes.size16,
+            horizontal: Sizes.size24,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              NavTab(
+                icon: FontAwesomeIcons.house,
+                isSelected: _selectedIndex == 0,
+                onTap: () => _onTap(0),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  NavTab(
-                    icon: FontAwesomeIcons.house,
-                    isSelected: _selectedIndex == 0,
-                    onTap: () => _onTap(0),
-                  ),
-                  NavTab(
-                    icon: FontAwesomeIcons.magnifyingGlass,
-                    isSelected: _selectedIndex == 1,
-                    onTap: () => _onTap(1),
-                  ),
-                  NavTab(
-                    icon: FontAwesomeIcons.penToSquare,
-                    isSelected: _selectedIndex == 2,
-                    onTap: _onWriteTap,
-                  ),
-                  NavTab(
-                    icon: FontAwesomeIcons.heart,
-                    isSelected: _selectedIndex == 3,
-                    onTap: () => _onTap(3),
-                  ),
-                  NavTab(
-                    icon: FontAwesomeIcons.user,
-                    isSelected: _selectedIndex == 4,
-                    onTap: () => _onTap(4),
-                  ),
-                ],
+              NavTab(
+                icon: FontAwesomeIcons.magnifyingGlass,
+                isSelected: _selectedIndex == 1,
+                onTap: () => _onTap(1),
               ),
-            )));
+              NavTab(
+                icon: FontAwesomeIcons.penToSquare,
+                isSelected: _selectedIndex == 2,
+                onTap: _onWriteTap,
+              ),
+              NavTab(
+                icon: FontAwesomeIcons.heart,
+                isSelected: _selectedIndex == 3,
+                onTap: () => _onTap(3),
+              ),
+              NavTab(
+                icon: FontAwesomeIcons.user,
+                isSelected: _selectedIndex == 4,
+                onTap: () => _onTap(4),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 

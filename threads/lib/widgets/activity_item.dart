@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:threads/constants/gaps.dart';
+import 'package:threads/constants/utils.dart';
 import 'package:threads/widgets/author_avatar.dart';
 
 class ActivityItem extends StatelessWidget {
@@ -54,9 +55,11 @@ class ActivityItem extends StatelessWidget {
                           Gaps.h5,
                           Text(
                             "${hours}h",
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 14,
-                              color: Colors.black54,
+                              color: isDarkMode(context)
+                                  ? Colors.grey.shade600
+                                  : Colors.black54,
                             ),
                           ),
                         ],
@@ -64,8 +67,10 @@ class ActivityItem extends StatelessWidget {
                       Gaps.v4,
                       Text(
                         activityMessage,
-                        style: const TextStyle(
-                          color: Colors.black54,
+                        style: TextStyle(
+                          color: isDarkMode(context)
+                              ? Colors.grey.shade600
+                              : Colors.black54,
                           fontSize: 14,
                         ),
                       ),
@@ -87,7 +92,6 @@ class ActivityItem extends StatelessWidget {
                     child: const Text(
                       "Following",
                       style: TextStyle(
-                        color: Colors.black87,
                         fontSize: 12,
                       ),
                     ),

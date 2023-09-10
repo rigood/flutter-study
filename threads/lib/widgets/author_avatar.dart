@@ -22,10 +22,11 @@ class AuthorAvatar extends StatelessWidget {
         CircleAvatar(
           radius: avatarRadius ?? 20,
           backgroundImage: AssetImage(authorAvatar),
+          backgroundColor: Colors.grey,
         ),
         Positioned(
-          bottom: -3,
-          right: -3,
+          bottom: -1,
+          right: -1,
           child: Container(
             padding: const EdgeInsets.all(3),
             decoration: BoxDecoration(

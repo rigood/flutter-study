@@ -10,9 +10,32 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: "Threads",
-      home: HomeScreen(),
+      themeMode: ThemeMode.dark,
+      theme: ThemeData(
+        brightness: Brightness.light,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+        ),
+        scaffoldBackgroundColor: Colors.white,
+        bottomAppBarTheme: const BottomAppBarTheme(
+          color: Colors.white,
+        ),
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.black,
+          foregroundColor: Colors.white,
+        ),
+        scaffoldBackgroundColor: Colors.black,
+        bottomAppBarTheme: const BottomAppBarTheme(
+          color: Colors.black,
+        ),
+      ),
+      home: const HomeScreen(),
     );
   }
 }

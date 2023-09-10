@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:threads/constants/utils.dart';
 
 class RepliesAvatar extends StatelessWidget {
   const RepliesAvatar({
@@ -71,7 +72,8 @@ class RepliesAvatar extends StatelessWidget {
                 left: 17,
                 child: CircleAvatar(
                   radius: 13,
-                  backgroundColor: Colors.white,
+                  backgroundColor:
+                      isDarkMode(context) ? Colors.black : Colors.white,
                   child: CircleAvatar(
                     radius: 10,
                     backgroundImage: AssetImage(repliesAvatarList[1]["img"]!),

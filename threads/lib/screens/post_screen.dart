@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:threads/constants/sizes.dart';
+import 'package:threads/constants/utils.dart';
 import 'package:threads/widgets/bottom_sheet.dart';
 import 'package:threads/widgets/post.dart';
 
@@ -95,13 +96,15 @@ class Logo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(
+    return Padding(
+      padding: const EdgeInsets.only(
         top: 50,
         bottom: 20,
       ),
       child: Image(
-        image: AssetImage('assets/images/logo.png'),
+        image: AssetImage(isDarkMode(context)
+            ? "assets/images/logo_dark.png"
+            : "assets/images/logo.png"),
         width: Sizes.size32,
       ),
     );

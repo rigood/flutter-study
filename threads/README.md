@@ -90,3 +90,15 @@
     - 촬영한 사진 또는 선택한 사진이 첨부된 Write 화면으로 이동
 
 - [🚀 구현 영상](https://imgur.com/a/8jAz4Yu)
+
+</br>
+
+# Code Challenge [Dark Mode]
+
+- Requirements
+
+  - Home, Search, Activity, Profile 화면을 다크모드로 바꾸기
+
+- [🚀 구현 영상](https://imgur.com/a/A9GnEmB)
+
+  <img src="./demo6.gif"  width="300"/>

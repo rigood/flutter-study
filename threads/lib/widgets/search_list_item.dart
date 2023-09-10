@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/constants/gaps.dart';
+import 'package:threads/constants/utils.dart';
 
 class SearchListItem extends StatelessWidget {
   const SearchListItem(
@@ -54,8 +55,10 @@ class SearchListItem extends StatelessWidget {
                       Gaps.v4,
                       Text(
                         userSubname,
-                        style: const TextStyle(
-                          color: Colors.black54,
+                        style: TextStyle(
+                          color: isDarkMode(context)
+                              ? Colors.grey.shade600
+                              : Colors.black54,
                           fontSize: 14,
                         ),
                       ),
@@ -76,7 +79,6 @@ class SearchListItem extends StatelessWidget {
                   child: const Text(
                     "Follow",
                     style: TextStyle(
-                      color: Colors.black,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                     ),

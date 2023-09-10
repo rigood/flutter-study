@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/constants/gaps.dart';
 import 'package:threads/constants/sizes.dart';
+import 'package:threads/constants/utils.dart';
 import 'package:threads/widgets/author_avatar.dart';
 import 'package:threads/widgets/replies_avatar.dart';
 
@@ -80,8 +81,10 @@ class Post extends StatelessWidget {
                             Gaps.h12,
                             Text(
                               readingTime,
-                              style: const TextStyle(
-                                color: Colors.black54,
+                              style: TextStyle(
+                                color: isDarkMode(context)
+                                    ? Colors.grey.shade600
+                                    : Colors.black54,
                               ),
                             ),
                             Gaps.h12,
@@ -156,8 +159,10 @@ class Post extends StatelessWidget {
                           children: [
                             Text(
                               "$replies replies · $likes likes",
-                              style: const TextStyle(
-                                color: Colors.black54,
+                              style: TextStyle(
+                                color: isDarkMode(context)
+                                    ? Colors.grey.shade600
+                                    : Colors.black54,
                               ),
                             ),
                           ],

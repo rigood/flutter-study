@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:threads/constants/gaps.dart';
 import 'package:threads/constants/sizes.dart';
+import 'package:threads/constants/utils.dart';
 import 'package:threads/mock.dart';
 import 'package:threads/widgets/activity_item.dart';
 
@@ -24,7 +25,6 @@ class _ActivityScreenState extends State<ActivityScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
         elevation: 0,
         title: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,7 +32,6 @@ class _ActivityScreenState extends State<ActivityScreen> {
             Text(
               "Activity",
               style: TextStyle(
-                color: Colors.black,
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
               ),
@@ -55,12 +54,13 @@ class _ActivityScreenState extends State<ActivityScreen> {
                   indicatorWeight: 0,
                   indicatorColor: Colors.transparent,
                   indicator: BoxDecoration(
-                    color: Colors.black,
+                    color: isDarkMode(context) ? Colors.white : Colors.black,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   labelPadding: const EdgeInsets.symmetric(horizontal: 5),
-                  labelColor: Colors.white,
-                  unselectedLabelColor: Colors.black,
+                  labelColor: isDarkMode(context) ? Colors.black : Colors.white,
+                  unselectedLabelColor:
+                      isDarkMode(context) ? Colors.white : Colors.black,
                   tabs: [
                     for (var tab in tabs)
                       Tab(
