@@ -159,3 +159,7 @@
 - 2023-09-10 (일)
 
   - [x] [코드챌린지 과제 (Dark mode)](./threads/README.md/#code-challenge-dark-mode)
+
+- 2023-09-11 (월)
+
+  - [x] [틱톡클론 강의 18 Navigator2](./TIL/tikto_18_navigator2.md)
