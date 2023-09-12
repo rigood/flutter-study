@@ -6,6 +6,8 @@ import 'package:threads/mock.dart';
 import 'package:threads/widgets/activity_item.dart';
 
 class ActivityScreen extends StatefulWidget {
+  static String routeName = "activity";
+
   const ActivityScreen({super.key});
 
   @override
@@ -26,6 +28,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        automaticallyImplyLeading: false,
         title: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -102,3 +102,24 @@
 - [🚀 구현 영상](https://imgur.com/a/A9GnEmB)
 
   <img src="./demo6.gif"  width="300"/>
+
+</br>
+
+# Code Challenge [Router Migration]
+
+- Requirements
+
+  - GoRouter로 마이그레이션
+
+  ```dart
+  /: Home Screen
+  /search: Search Screen
+  /activity: Activity Screen
+  /profile: Profile Screen
+  /settings: Settings Screen
+  /settings/privacy: Privacy Screen
+  ```
+
+- [🚀 구현 영상](https://imgur.com/a/3krvCK6)
+
+  <img src="./demo7.gif"  width="300"/>

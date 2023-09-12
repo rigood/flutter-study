@@ -5,6 +5,8 @@ import 'package:threads/mock.dart';
 import 'package:threads/widgets/search_list_item.dart';
 
 class SearchScreen extends StatefulWidget {
+  static String routeName = "search";
+
   const SearchScreen({super.key});
 
   @override
@@ -20,6 +22,7 @@ class _SearchScreenState extends State<SearchScreen> {
       appBar: AppBar(
         elevation: 0,
         toolbarHeight: 100,
+        automaticallyImplyLeading: false,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

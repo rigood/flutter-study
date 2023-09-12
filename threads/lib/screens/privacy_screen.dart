@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/constants/gaps.dart';
+import 'package:go_router/go_router.dart';
 
 class PrivacyScreen extends StatefulWidget {
+  static String routeName = "privacy";
+
   const PrivacyScreen({super.key});
 
   @override
@@ -20,7 +23,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
   }
 
   void _onBackTap() {
-    Navigator.of(context).pop();
+    context.pop();
   }
 
   @override

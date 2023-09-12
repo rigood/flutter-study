@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:threads/constants/gaps.dart';
 import 'package:threads/widgets/report_bottom_sheet.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomBottomSheet extends StatefulWidget {
   const CustomBottomSheet({super.key});
@@ -11,7 +12,7 @@ class CustomBottomSheet extends StatefulWidget {
 
 class _CustomBottomSheetState extends State<CustomBottomSheet> {
   void _onReportTap() {
-    Navigator.of(context).pop();
+    context.pop();
     showModalBottomSheet(
       context: context,
       builder: (context) {

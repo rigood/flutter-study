@@ -4,6 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:threads/constants/gaps.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/screens/camera_screen.dart';
+import 'package:go_router/go_router.dart';
 
 class WriteScreen extends StatefulWidget {
   const WriteScreen({super.key});
@@ -42,7 +43,7 @@ class _WriteScreenState extends State<WriteScreen> {
   }
 
   void _onCancelPressed() {
-    Navigator.of(context).pop();
+    context.pop();
   }
 
   Future<void> _onAttachmentTap() async {

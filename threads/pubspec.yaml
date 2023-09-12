@@ -41,6 +41,7 @@ dependencies:
   video_player: 2.4.10
   gallery_saver: 2.3.2
   image_picker: 0.8.6+1
+  go_router: 6.0.2
 
 dev_dependencies:
   flutter_test:

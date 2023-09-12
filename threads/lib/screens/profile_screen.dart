@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/constants/gaps.dart';
 import 'package:threads/constants/utils.dart';
-import 'package:threads/screens/settings_screen.dart';
 import 'package:threads/widgets/post.dart';
 import 'package:threads/widgets/profile_tab_bar.dart';
 import 'package:threads/widgets/replies_avatar.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileScreen extends StatefulWidget {
+  static String routeName = "profile";
+
   const ProfileScreen({super.key});
 
   @override
@@ -25,9 +27,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   ];
 
   void _onSettingsTap() {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => const SettingsScreen()),
-    );
+    context.push("/settings");
   }
 
   @override
@@ -40,6 +40,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           return [
             SliverAppBar(
               toolbarHeight: 50,
+              automaticallyImplyLeading: false,
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

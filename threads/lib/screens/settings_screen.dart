@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:threads/constants/gaps.dart';
-import 'package:threads/screens/privacy_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
+  static String routeName = "settings";
+
   const SettingsScreen({super.key});
 
   @override
@@ -12,13 +14,11 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   void _onBackTap() {
-    Navigator.of(context).pop();
+    context.pop();
   }
 
   void _onPrivacyTap() {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => const PrivacyScreen()),
-    );
+    context.push("/settings/privacy");
   }
 
   void _onLogoutTap() {

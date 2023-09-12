@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:threads/screens/home_screen.dart';
+import 'package:threads/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       title: "Threads",
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.system,
       theme: ThemeData(
         brightness: Brightness.light,
         appBarTheme: const AppBarTheme(
@@ -35,7 +36,6 @@ class MyApp extends StatelessWidget {
           color: Colors.black,
         ),
       ),
-      home: const HomeScreen(),
     );
   }
 }

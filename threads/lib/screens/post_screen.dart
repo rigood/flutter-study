@@ -7,6 +7,8 @@ import 'package:threads/widgets/post.dart';
 class PostScreen extends StatelessWidget {
   PostScreen({super.key});
 
+  static String routeName = "/";
+
   final imageList1 = [
     {"img": "assets/images/blue.gif"}
   ];
