@@ -163,3 +163,9 @@
 - 2023-09-11 (월)
 
   - [x] [틱톡클론 강의 18 Navigator2](./TIL/tikto_18_navigator2.md)
+
+- 2023-09-13 (수)
+
+  - [x] [틱톡클론 강의 20 Router](./TIL/tiktok_20_router.md)
+  - [x] [틱톡클론 강의 20 State Managgement](./TIL/tiktok_20_state_management.md)
+  - [x] 틱톡클론 퀴즈 풀기
