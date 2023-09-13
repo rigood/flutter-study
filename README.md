@@ -162,10 +162,16 @@
 
 - 2023-09-11 (월)
 
-  - [x] [틱톡클론 강의 18 Navigator2](./TIL/tikto_18_navigator2.md)
+  - [x] [틱톡클론 강의 18 Navigator2](./TIL/tiktok_18_navigator2.md)
+
+- 2023-09-12 (화)
+
+  - [x] [코드챌린지 과제 (Router migration)](./threads/README.md/#code-challenge-router-migration)
 
 - 2023-09-13 (수)
 
   - [x] [틱톡클론 강의 20 Router](./TIL/tiktok_20_router.md)
-  - [x] [틱톡클론 강의 20 State Managgement](./TIL/tiktok_20_state_management.md)
+  - [x] [틱톡클론 강의 20 State Management](./TIL/tiktok_20_state_management.md)
   - [x] 틱톡클론 퀴즈 풀기
+  - [x] [코드챌린지 과제 리팩토링 (Router migration)](https://github.com/rigood/flutter-study/commit/fc71e821acf7b856e9b5f3892fe4d764273e547e#)
+  - [x] [6주차 주간회고록 작성](./weeks/week6.md)
