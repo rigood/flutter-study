@@ -5,9 +5,9 @@ import 'package:threads/widgets/bottom_sheet.dart';
 import 'package:threads/widgets/post.dart';
 
 class PostScreen extends StatelessWidget {
-  PostScreen({super.key});
+  static String routeName = "";
 
-  static String routeName = "/";
+  PostScreen({super.key});
 
   final imageList1 = [
     {"img": "assets/images/blue.gif"}

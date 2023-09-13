@@ -11,22 +11,6 @@ import 'package:threads/screens/activity_screen.dart';
 import 'package:threads/widgets/nav_tab.dart';
 import 'package:go_router/go_router.dart';
 
-int _getSelectedIndex(String routeName) {
-  if (routeName == SearchScreen.routeName) {
-    return 1;
-  } else if (routeName == ActivityScreen.routeName) {
-    return 3;
-  } else if (routeName == ProfileScreen.routeName) {
-    return 4;
-  } else if (routeName == SettingsScreen.routeName) {
-    return 5;
-  } else if (routeName == PrivacyScreen.routeName) {
-    return 6;
-  } else {
-    return 0;
-  }
-}
-
 class HomeScreen extends StatefulWidget {
   final String routeName;
   const HomeScreen({
@@ -39,10 +23,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late int _selectedIndex;
+  final List<String> _routeNames = [
+    PostScreen.routeName,
+    SearchScreen.routeName,
+    PostScreen.routeName,
+    ActivityScreen.routeName,
+    ProfileScreen.routeName,
+    SettingsScreen.routeName,
+    PrivacyScreen.routeName
+  ];
 
-  void _onTap(String routeName) {
-    context.push("/$routeName");
+  late final int _selectedIndex = _routeNames.indexOf(widget.routeName);
+
+  void _onTap(int index) {
+    context.push("/${_routeNames[index]}");
   }
 
   final screens = [
@@ -52,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const ActivityScreen(),
     const ProfileScreen(),
     const SettingsScreen(),
-    const PrivacyScreen(),
+    const PrivacyScreen()
   ];
 
   void _onWriteTap() {
@@ -67,8 +61,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _selectedIndex = _getSelectedIndex(widget.routeName);
-
     return Scaffold(
       body: screens[_selectedIndex],
       bottomNavigationBar: BottomAppBar(
@@ -84,12 +76,12 @@ class _HomeScreenState extends State<HomeScreen> {
               NavTab(
                 icon: FontAwesomeIcons.house,
                 isSelected: _selectedIndex == 0,
-                onTap: () => _onTap(PostScreen.routeName),
+                onTap: () => _onTap(0),
               ),
               NavTab(
                 icon: FontAwesomeIcons.magnifyingGlass,
                 isSelected: _selectedIndex == 1,
-                onTap: () => _onTap(SearchScreen.routeName),
+                onTap: () => _onTap(1),
               ),
               NavTab(
                 icon: FontAwesomeIcons.penToSquare,
@@ -99,14 +91,14 @@ class _HomeScreenState extends State<HomeScreen> {
               NavTab(
                 icon: FontAwesomeIcons.heart,
                 isSelected: _selectedIndex == 3,
-                onTap: () => _onTap(ActivityScreen.routeName),
+                onTap: () => _onTap(3),
               ),
               NavTab(
                 icon: FontAwesomeIcons.user,
                 isSelected: _selectedIndex == 4 ||
                     _selectedIndex == 5 ||
                     _selectedIndex == 6,
-                onTap: () => _onTap(ProfileScreen.routeName),
+                onTap: () => _onTap(4),
               ),
             ],
           ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:threads/constants/gaps.dart';
+import 'package:threads/screens/privacy_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   static String routeName = "settings";
@@ -18,7 +19,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _onPrivacyTap() {
-    context.push("/settings/privacy");
+    context.pushNamed(PrivacyScreen.routeName);
   }
 
   void _onLogoutTap() {
