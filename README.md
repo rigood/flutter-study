@@ -7,6 +7,7 @@
 - [Week 3](weeks/week3.md)
 - [Week 4](weeks/week4.md)
 - [Week 5](weeks/week5.md)
+- [Week 6](weeks/week6.md)
 
 <br>
 
@@ -145,7 +146,10 @@
 
 </details>
 
-### Week6
+<br>
+
+<details>
+<summary><b>Week 6</b></summary>
 
 - 2023-09-07 (목)
 
@@ -175,3 +179,13 @@
   - [x] 틱톡클론 퀴즈 풀기
   - [x] [코드챌린지 과제 리팩토링 (Router migration)](https://github.com/rigood/flutter-study/commit/fc71e821acf7b856e9b5f3892fe4d764273e547e#)
   - [x] [6주차 주간회고록 작성](./weeks/week6.md)
+
+</details>
+
+</br>
+
+### Week 7
+
+- 2023-09-14 (목)
+
+- [x] [틱톡클론 강의 21 MVVM with provider](./TIL/tiktok_21_mvvm_with_provider.md)
