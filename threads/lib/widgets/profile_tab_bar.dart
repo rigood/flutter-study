@@ -7,6 +7,7 @@ class ProfileTabBar extends SliverPersistentHeaderDelegate {
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       decoration: BoxDecoration(
+        color: isDarkMode(context) ? Colors.black : Colors.white,
         border: Border(
           bottom: BorderSide(
             color: Colors.grey.shade200,

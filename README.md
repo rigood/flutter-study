@@ -189,3 +189,4 @@
 - 2023-09-14 (목)
 
 - [x] [틱톡클론 강의 21 MVVM with provider](./TIL/tiktok_21_mvvm_with_provider.md)
+- [x] [코드챌린지 과제 (MVVM + provider + darkmode)](./threads/README.md/#code-challenge-mvvm--provider--dark-mode)

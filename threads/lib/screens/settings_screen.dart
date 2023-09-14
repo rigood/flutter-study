@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:threads/constants/gaps.dart';
+import 'package:threads/constants/utils.dart';
 import 'package:threads/screens/privacy_screen.dart';
+import 'package:threads/view_models/darkmode_config_vm.dart';
 
 class SettingsScreen extends StatefulWidget {
   static String routeName = "settings";
@@ -45,8 +48,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        foregroundColor: Colors.black,
-        backgroundColor: Colors.white,
         elevation: 1,
         automaticallyImplyLeading: false,
         leadingWidth: 100,
@@ -110,6 +111,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const Divider(
             color: Colors.grey,
           ),
+          SwitchListTile.adaptive(
+            title: const Text("Dark mode"),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 10,
+            ),
+            value: context.watch<DarkmodeConfigViewModel>().darkmode,
+            onChanged: (value) =>
+                context.read<DarkmodeConfigViewModel>().setDarkmode(value),
+          ),
           Padding(
             padding: const EdgeInsets.all(10),
             child: Row(
@@ -156,7 +166,7 @@ class SettingsListTile extends StatelessWidget {
         left: 10,
       ),
       titleAlignment: ListTileTitleAlignment.center,
-      iconColor: Colors.black,
+      iconColor: isDarkMode(context) ? Colors.white : Colors.black,
       leading: FaIcon(
         icon,
         size: 20,

@@ -123,3 +123,16 @@
 - [🚀 구현 영상](https://imgur.com/a/3krvCK6)
 
   <img src="./demo7.gif"  width="300"/>
+
+</br>
+
+# Code Challenge [MVVM + Provider + Dark Mode]
+
+- Requirements
+
+  - Provider, MVVM 패턴을 사용하여 설정 화면에서 다크모드 스위치 구현
+  - ChangeNotifier, ChangeNotifierProvider 사용
+
+- [🚀 구현 영상](https://imgur.com/a/4sBfjsE)
+
+  <img src="./demo8.gif"  width="300"/>

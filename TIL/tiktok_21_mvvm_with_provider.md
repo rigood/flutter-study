@@ -140,6 +140,8 @@ class PlaybackConfigViewModel extends ChangeNotifier {
 // main.dart
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   final preferences = await SharedPreferences.getInstance();
   final repository = PlaybackConfigRepository(preferences);
 

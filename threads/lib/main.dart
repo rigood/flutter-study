@@ -1,8 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:threads/repos/darkmode_config_repo.dart';
 import 'package:threads/router.dart';
+import 'package:threads/view_models/darkmode_config_vm.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final preferences = await SharedPreferences.getInstance();
+  final repository = DarkmodeConfigRepository(preferences);
+
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => DarkmodeConfigViewModel(repository),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -13,7 +31,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: router,
       title: "Threads",
-      themeMode: ThemeMode.system,
+      themeMode: context.watch<DarkmodeConfigViewModel>().darkmode
+          ? ThemeMode.dark
+          : ThemeMode.light,
       theme: ThemeData(
         brightness: Brightness.light,
         appBarTheme: const AppBarTheme(
