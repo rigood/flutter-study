@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -7,16 +8,16 @@ import 'package:threads/constants/utils.dart';
 import 'package:threads/screens/privacy_screen.dart';
 import 'package:threads/view_models/darkmode_config_vm.dart';
 
-class SettingsScreen extends StatefulWidget {
+class SettingsScreen extends ConsumerStatefulWidget {
   static String routeName = "settings";
 
   const SettingsScreen({super.key});
 
   @override
-  State<SettingsScreen> createState() => _SettingsScreenState();
+  SettingsScreenState createState() => SettingsScreenState();
 }
 
-class _SettingsScreenState extends State<SettingsScreen> {
+class SettingsScreenState extends ConsumerState<SettingsScreen> {
   void _onBackTap() {
     context.pop();
   }
@@ -116,9 +117,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 10,
             ),
-            value: context.watch<DarkmodeConfigViewModel>().darkmode,
+            value: ref.watch(darkmodeConfigProvider).darkmode,
             onChanged: (value) =>
-                context.read<DarkmodeConfigViewModel>().setDarkmode(value),
+                ref.read(darkmodeConfigProvider.notifier).setDarkmode(value),
           ),
           Padding(
             padding: const EdgeInsets.all(10),

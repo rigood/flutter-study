@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:threads/repos/darkmode_config_repo.dart';
 import 'package:threads/router.dart';
@@ -12,26 +12,25 @@ void main() async {
   final repository = DarkmodeConfigRepository(preferences);
 
   runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => DarkmodeConfigViewModel(repository),
-        ),
+    ProviderScope(
+      overrides: [
+        darkmodeConfigProvider
+            .overrideWith(() => DarkmodeConfigViewModel(repository))
       ],
       child: const MyApp(),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
       routerConfig: router,
       title: "Threads",
-      themeMode: context.watch<DarkmodeConfigViewModel>().darkmode
+      themeMode: ref.watch(darkmodeConfigProvider).darkmode
           ? ThemeMode.dark
           : ThemeMode.light,
       theme: ThemeData(
