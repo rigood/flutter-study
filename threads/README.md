@@ -136,3 +136,16 @@
 - [🚀 구현 영상](https://imgur.com/a/4sBfjsE)
 
   <img src="./demo8.gif"  width="300"/>
+
+</br>
+
+# Code Challenge [Riverpod]
+
+- Requirements
+
+  - Proivder -> Riverpod으로 마이그레이션
+  - Riverpod, MVVM 패턴을 사용하여 설정 화면에서 다크모드 스위치 구현
+
+- [🧸 깃허브 커밋 링크](https://github.com/rigood/flutter-study/commit/b8313c9418a834efae195d64ba1ecce61dcf798b)
+
+</br>
