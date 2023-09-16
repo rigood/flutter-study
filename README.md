@@ -192,5 +192,9 @@
   - [x] [코드챌린지 과제 (MVVM + provider + darkmode)](./threads/README.md/#code-challenge-mvvm--provider--dark-mode)
 
 - 2023-09-15 (금)
+
   - [x] [틱톡클론 강의 22 Riverpod](./TIL/tiktok_22_riverpod.md)
   - [x] [코드챌린지 과제 (Riverpod)](./threads/README.md/#code-challenge-riverpod)
+
+- 2023-09-16 (토)
+  - [x] [틱톡클론 강의 23 Firebase setup](./TIL/tiktok_23_firebase_setup.md)
