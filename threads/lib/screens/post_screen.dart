@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:threads/constants/sizes.dart';
-import 'package:threads/constants/utils.dart';
+import 'package:threads/utils.dart';
 import 'package:threads/widgets/bottom_sheet.dart';
 import 'package:threads/widgets/post.dart';
 

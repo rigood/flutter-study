@@ -198,3 +198,4 @@
 
 - 2023-09-16 (토)
   - [x] [틱톡클론 강의 23 Firebase setup](./TIL/tiktok_23_firebase_setup.md)
+  - [x] [코드챌린지 과제 (Authentication)](./threads/README.md/#code-challenge-authentication)

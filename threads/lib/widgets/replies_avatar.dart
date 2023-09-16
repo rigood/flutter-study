@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:threads/constants/utils.dart';
+import 'package:threads/utils.dart';
 
 class RepliesAvatar extends StatelessWidget {
   const RepliesAvatar({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:threads/constants/gaps.dart';
 import 'package:threads/constants/sizes.dart';
-import 'package:threads/constants/utils.dart';
+import 'package:threads/utils.dart';
 import 'package:threads/mock.dart';
 import 'package:threads/widgets/activity_item.dart';
 

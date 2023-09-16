@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "632036317653",
+    "project_id": "rigood-threads",
+    "storage_bucket": "rigood-threads.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632036317653:android:50574e9b6061cf6964455c",
+        "android_client_info": {
+          "package_name": "com.example.threads"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRFBEBrnfUcanw0JSI3MYt-35KpvcPyIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

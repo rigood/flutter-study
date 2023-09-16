@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:threads/constants/gaps.dart';
-import 'package:threads/constants/utils.dart';
+import 'package:threads/utils.dart';
 import 'package:threads/widgets/author_avatar.dart';
 
 class ActivityItem extends StatelessWidget {

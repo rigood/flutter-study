@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/constants/gaps.dart';
-import 'package:threads/constants/utils.dart';
+import 'package:threads/utils.dart';
 import 'package:threads/screens/settings_screen.dart';
 import 'package:threads/widgets/post.dart';
 import 'package:threads/widgets/profile_tab_bar.dart';

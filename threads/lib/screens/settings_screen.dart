@@ -4,7 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:threads/constants/gaps.dart';
-import 'package:threads/constants/utils.dart';
+import 'package:threads/utils.dart';
+import 'package:threads/repos/auth_repo.dart';
 import 'package:threads/screens/privacy_screen.dart';
 import 'package:threads/view_models/darkmode_config_vm.dart';
 
@@ -34,11 +35,18 @@ class SettingsScreenState extends ConsumerState<SettingsScreen> {
         actions: [
           TextButton(
             onPressed: () {},
-            child: const Text("Yes"),
+            child: const Text("No"),
           ),
           TextButton(
-            onPressed: () {},
-            child: const Text("No"),
+            onPressed: () {
+              ref.read(authRepo).signOut();
+            },
+            child: const Text(
+              "Yes",
+              style: TextStyle(
+                color: Colors.red,
+              ),
+            ),
           ),
         ],
       ),
@@ -136,11 +144,11 @@ class SettingsScreenState extends ConsumerState<SettingsScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 20,
-                  height: 20,
-                  child: CircularProgressIndicator.adaptive(),
-                ),
+                // const SizedBox(
+                //   width: 20,
+                //   height: 20,
+                //   child: CircularProgressIndicator.adaptive(),
+                // ),
               ],
             ),
           )

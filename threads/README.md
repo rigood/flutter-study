@@ -149,3 +149,13 @@
 - [🧸 깃허브 커밋 링크](https://github.com/rigood/flutter-study/commit/b8313c9418a834efae195d64ba1ecce61dcf798b)
 
 </br>
+
+# Code Challenge [Authentication]
+
+- Requirements
+
+  - Firebase authentication을 사용하여 계정 생성 및 로그인 구현
+  - 계정생성, 로그인 화면에는 이메일, 비밀번호를 입력받는 양식이 있어야함
+  - 사용자가 양식을 제출하면 Firebase 인증을 통해 계정생성/로그인 후 홈 화면으로 이동해야함
+
+  <img src="./demo9.gif"  width="300"/>
