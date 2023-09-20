@@ -3,18 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:threads/constants/gaps.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:threads/repos/user_repo.dart';
 import 'package:threads/screens/camera_screen.dart';
 import 'package:go_router/go_router.dart';
+import 'package:threads/view_models/upload_post_vm.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:threads/view_models/users_vm.dart';
 
-class WriteScreen extends StatefulWidget {
+class WriteScreen extends ConsumerStatefulWidget {
   const WriteScreen({super.key});
 
   @override
-  State<WriteScreen> createState() => _WriteScreenState();
+  ConsumerState<WriteScreen> createState() => _WriteScreenState();
 }
 
-class _WriteScreenState extends State<WriteScreen> {
-  String _thread = "";
+class _WriteScreenState extends ConsumerState<WriteScreen> {
+  String _text = "";
   String _imgPath = "";
   bool _hasImage = false;
 
@@ -27,7 +31,7 @@ class _WriteScreenState extends State<WriteScreen> {
 
     _threadTextEditingController.addListener(() {
       setState(() {
-        _thread = _threadTextEditingController.text;
+        _text = _threadTextEditingController.text;
       });
     });
   }
@@ -56,6 +60,7 @@ class _WriteScreenState extends State<WriteScreen> {
     if (data["shouldOpenImagePicker"]) {
       final picture = await ImagePicker().pickImage(
         source: ImageSource.gallery,
+        imageQuality: 40,
       );
 
       if (picture == null) return;
@@ -75,6 +80,14 @@ class _WriteScreenState extends State<WriteScreen> {
       _imgPath = "";
       _hasImage = false;
     });
+  }
+
+  void _uploadPost() {
+    ref.read(uploadPostProvider.notifier).uploadPost(
+          _text,
+          File(_imgPath),
+          context,
+        );
   }
 
   @override
@@ -185,9 +198,9 @@ class _WriteScreenState extends State<WriteScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
-                                "rigood",
-                                style: TextStyle(
+                              Text(
+                                ref.read(usersProvider).value!.name,
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -276,9 +289,9 @@ class _WriteScreenState extends State<WriteScreen> {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: _uploadPost,
                           child: AnimatedOpacity(
-                            opacity: _thread.isEmpty ? 0.5 : 1,
+                            opacity: _text.isEmpty ? 0.5 : 1,
                             duration: const Duration(milliseconds: 300),
                             child: const Text(
                               "Post",
