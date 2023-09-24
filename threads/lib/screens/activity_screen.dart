@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:threads/constants/gaps.dart';
-import 'package:threads/constants/sizes.dart';
 import 'package:threads/utils.dart';
 import 'package:threads/mock.dart';
 import 'package:threads/widgets/activity_item.dart';
@@ -29,15 +27,12 @@ class _ActivityScreenState extends State<ActivityScreen> {
       appBar: AppBar(
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: const Column(
+        title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "Activity",
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.displayLarge,
             ),
           ],
         ),

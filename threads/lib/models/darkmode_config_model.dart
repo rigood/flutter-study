@@ -1,7 +1,7 @@
 class DarkmodeConfigModel {
-  bool darkmode;
+  bool isDarkmode;
 
   DarkmodeConfigModel({
-    required this.darkmode,
+    required this.isDarkmode,
   });
 }

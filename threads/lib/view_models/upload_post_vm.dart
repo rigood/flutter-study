@@ -1,17 +1,13 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:threads/models/post_model.dart';
 import 'package:threads/repos/auth_repo.dart';
 import 'package:threads/repos/post_repo.dart';
 import 'package:threads/view_models/users_vm.dart';
 
 class UploadPostViewModel extends AsyncNotifier<void> {
-  final FirebaseStorage _storage = FirebaseStorage.instance;
-
   late final PostRepository _repository;
 
   @override
@@ -38,14 +34,15 @@ class UploadPostViewModel extends AsyncNotifier<void> {
             text: text,
             creatorName: userProfile.name,
             creatorUid: user.uid,
+            creatorAvatar: user.photoURL ?? "",
             imgUrl: await task.ref.getDownloadURL(),
+            replies: 0,
+            likes: 0,
             createdAt: DateTime.now().millisecondsSinceEpoch,
           ),
         );
       },
     );
-
-    context.pushReplacement("/");
   }
 }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:camera/camera.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:threads/constants/gaps.dart';
 
 class CameraScreen extends StatefulWidget {
@@ -15,10 +15,12 @@ class _CameraScreenState extends State<CameraScreen>
     with WidgetsBindingObserver {
   late CameraController _cameraController;
 
-  bool _isCameraReady = false;
+  bool _appActivated = true;
+  bool _hasPermissions = false;
+  List<String> _deniedPermissions = [];
   bool _isSelfieMode = false;
   bool _isFlashOn = false;
-  bool _isShooting = false;
+  bool _isSavingPicture = false;
 
   void _onBackButtonTap() {
     Navigator.of(context).pop({
@@ -27,7 +29,7 @@ class _CameraScreenState extends State<CameraScreen>
     });
   }
 
-  void _onLibraryTap() {
+  void _onGalleryTap() {
     Navigator.of(context).pop({
       "imgPath": "",
       "shouldOpenImagePicker": true,
@@ -36,7 +38,7 @@ class _CameraScreenState extends State<CameraScreen>
 
   Future<void> _takePicture() async {
     setState(() {
-      _isShooting = true;
+      _isSavingPicture = true;
     });
 
     final picture = await _cameraController.takePicture();
@@ -75,7 +77,28 @@ class _CameraScreenState extends State<CameraScreen>
 
     await _cameraController.initialize();
 
-    _isCameraReady = true;
+    setState(() {});
+  }
+
+  Future<void> _initPermissions() async {
+    final cameraPermission = await Permission.camera.request();
+    final micPermission = await Permission.microphone.request();
+
+    final cameraDenied =
+        cameraPermission.isDenied || cameraPermission.isPermanentlyDenied;
+    final micDenied =
+        micPermission.isDenied || micPermission.isPermanentlyDenied;
+
+    if (!cameraDenied && !micDenied) {
+      _hasPermissions = true;
+      await _initCamera();
+    } else {
+      _hasPermissions = false;
+      _deniedPermissions = [
+        if (cameraDenied) "카메라",
+        if (micDenied) "마이크",
+      ];
+    }
 
     setState(() {});
   }
@@ -83,25 +106,36 @@ class _CameraScreenState extends State<CameraScreen>
   @override
   void initState() {
     super.initState();
-    _initCamera();
+    _initPermissions();
     WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
-    _cameraController.dispose();
+    if (_cameraController.value.isInitialized) {
+      _cameraController.dispose();
+    }
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (!_isCameraReady) return;
+  void didChangeAppLifecycleState(AppLifecycleState state) async {
+    if (!_cameraController.value.isInitialized) return;
 
-    if (state == AppLifecycleState.inactive) {
-      _cameraController.dispose();
-    } else if (state == AppLifecycleState.resumed) {
-      _initCamera();
+    switch (state) {
+      case AppLifecycleState.resumed:
+        _appActivated = true;
+        await _initPermissions();
+        break;
+      case AppLifecycleState.paused:
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.detached:
+      case AppLifecycleState.hidden:
+        _appActivated = false;
+        setState(() {});
+        _cameraController.dispose();
+        break;
     }
   }
 
@@ -122,21 +156,29 @@ class _CameraScreenState extends State<CameraScreen>
       ),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
-        child: !_isCameraReady || _isShooting
+        child: _isSavingPicture ||
+                !_appActivated ||
+                !_hasPermissions ||
+                !_cameraController.value.isInitialized
             ? Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const CircularProgressIndicator(
-                      color: Colors.white,
-                    ),
+                    if (_isSavingPicture ||
+                        !_appActivated ||
+                        !_cameraController.value.isInitialized)
+                      const CircularProgressIndicator(
+                        color: Colors.white,
+                      ),
                     Gaps.v40,
                     Text(
-                      !_isCameraReady
-                          ? "카메라 실행중"
-                          : _isShooting
-                              ? "사진 저장중"
-                              : "",
+                      _isSavingPicture
+                          ? "사진 저장중"
+                          : !_hasPermissions
+                              ? "${_deniedPermissions.join(", ")}에 대한\n 권한을 허용해주세요."
+                              : !_cameraController.value.isInitialized
+                                  ? "카메라 실행중"
+                                  : "로딩중",
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         color: Colors.white,
@@ -235,9 +277,9 @@ class _CameraScreenState extends State<CameraScreen>
                           child: Container(
                             alignment: Alignment.center,
                             child: GestureDetector(
-                              onTap: _onLibraryTap,
+                              onTap: _onGalleryTap,
                               child: const Text(
-                                "Library",
+                                "Gallery",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Colors.grey,

@@ -17,3 +17,8 @@ void showFirebaseErrorSnack(
     ),
   );
 }
+
+String getPostReadingTime(int postTextLength) {
+  final int time = (postTextLength / 100).floor();
+  return "${time}m";
+}

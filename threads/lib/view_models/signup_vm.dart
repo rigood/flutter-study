@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:threads/utils.dart';
 import 'package:threads/repos/auth_repo.dart';
 import 'package:threads/view_models/users_vm.dart';
+import 'package:threads/utils.dart';
 
 class SignUpViewModel extends AsyncNotifier<void> {
   late final AuthenticationRepository _repository;

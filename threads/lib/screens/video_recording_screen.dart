@@ -125,24 +125,19 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
   void didChangeAppLifecycleState(AppLifecycleState state) {
     switch (state) {
       case AppLifecycleState.detached:
-        print("❤❤❤❤❤❤ 뷰 제거, 엔진만 동작, 앱 종료 직전 실행 (detached) ❤❤❤❤❤❤ ");
         break;
 
       case AppLifecycleState.hidden:
-        print("❤❤❤❤❤❤ 숨김 (hidden) ❤❤❤❤❤❤ ");
         break;
 
       case AppLifecycleState.inactive:
-        print("❤❤❤❤❤❤ 비활성화 (inactive) ❤❤❤❤❤❤ ");
         _cameraController.dispose();
         break;
 
       case AppLifecycleState.paused:
-        print("❤❤❤❤❤❤ 백그라운드 (paused) ❤❤❤❤❤❤ ");
         break;
 
       case AppLifecycleState.resumed:
-        print("❤❤❤❤❤❤ 다시 시작 (resumed) ❤❤❤❤❤❤ ");
         // if (!_hasPermission || !_cameraController.value.isInitialized) return;
         break;
 

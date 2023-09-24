@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:threads/firebase_options.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:threads/repos/darkmode_config_repo.dart';
-import 'package:threads/router.dart';
 import 'package:threads/view_models/darkmode_config_vm.dart';
+import 'package:threads/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,7 +36,7 @@ class MyApp extends ConsumerWidget {
     return MaterialApp.router(
       routerConfig: ref.watch(routerProvider),
       title: "Threads",
-      themeMode: ref.watch(darkmodeConfigProvider).darkmode
+      themeMode: ref.watch(darkmodeConfigProvider).isDarkmode
           ? ThemeMode.dark
           : ThemeMode.light,
       theme: ThemeData(
@@ -46,8 +46,25 @@ class MyApp extends ConsumerWidget {
           foregroundColor: Colors.black,
         ),
         scaffoldBackgroundColor: Colors.white,
+        dividerColor: Colors.grey.shade100,
         bottomAppBarTheme: const BottomAppBarTheme(
           color: Colors.white,
+        ),
+        textTheme: const TextTheme(
+          displayLarge: TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+          labelMedium: TextStyle(
+            fontSize: 14,
+            color: Colors.black54,
+          ),
+          labelSmall: TextStyle(
+            fontSize: 12,
+            color: Colors.black54,
+            letterSpacing: 0,
+          ),
         ),
       ),
       darkTheme: ThemeData(
@@ -59,6 +76,23 @@ class MyApp extends ConsumerWidget {
         scaffoldBackgroundColor: Colors.black,
         bottomAppBarTheme: const BottomAppBarTheme(
           color: Colors.black,
+        ),
+        dividerColor: Colors.grey.shade900,
+        textTheme: TextTheme(
+          displayLarge: const TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          labelMedium: TextStyle(
+            fontSize: 14,
+            color: Colors.grey.shade600,
+          ),
+          labelSmall: TextStyle(
+            fontSize: 12,
+            color: Colors.grey.shade600,
+            letterSpacing: 0,
+          ),
         ),
       ),
     );

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:threads/constants/gaps.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:threads/repos/user_repo.dart';
 import 'package:threads/screens/camera_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:threads/view_models/upload_post_vm.dart';
@@ -20,7 +19,6 @@ class WriteScreen extends ConsumerStatefulWidget {
 class _WriteScreenState extends ConsumerState<WriteScreen> {
   String _text = "";
   String _imgPath = "";
-  bool _hasImage = false;
 
   final TextEditingController _threadTextEditingController =
       TextEditingController();
@@ -42,7 +40,7 @@ class _WriteScreenState extends ConsumerState<WriteScreen> {
     super.dispose();
   }
 
-  void _closeKeyboard() {
+  void _hideKeyboard() {
     FocusScope.of(context).unfocus();
   }
 
@@ -66,10 +64,8 @@ class _WriteScreenState extends ConsumerState<WriteScreen> {
       if (picture == null) return;
 
       _imgPath = picture.path;
-      _hasImage = true;
     } else {
       _imgPath = data["imgPath"];
-      _hasImage = true;
     }
 
     setState(() {});
@@ -78,7 +74,6 @@ class _WriteScreenState extends ConsumerState<WriteScreen> {
   void _removeImage() {
     setState(() {
       _imgPath = "";
-      _hasImage = false;
     });
   }
 
@@ -88,6 +83,8 @@ class _WriteScreenState extends ConsumerState<WriteScreen> {
           File(_imgPath),
           context,
         );
+
+    context.pushReplacement("/");
   }
 
   @override
@@ -140,7 +137,7 @@ class _WriteScreenState extends ConsumerState<WriteScreen> {
         ),
         body: GestureDetector(
           behavior: HitTestBehavior.translucent,
-          onTap: _closeKeyboard,
+          onTap: _hideKeyboard,
           child: Stack(
             children: [
               const Row(
@@ -199,17 +196,25 @@ class _WriteScreenState extends ConsumerState<WriteScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                ref.read(usersProvider).value!.name,
+                                ref.read(usersProvider).value?.name ??
+                                    "Anonmyous",
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
+                                  color: Colors.black,
                                 ),
                               ),
                               TextField(
                                 minLines: null,
                                 maxLines: null,
                                 controller: _threadTextEditingController,
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                ),
                                 decoration: const InputDecoration(
                                   hintText: "Start a thread...",
+                                  hintStyle: TextStyle(
+                                    color: Colors.grey,
+                                  ),
                                   border: InputBorder.none,
                                   isDense: true,
                                   contentPadding: EdgeInsets.symmetric(
@@ -217,7 +222,7 @@ class _WriteScreenState extends ConsumerState<WriteScreen> {
                                   ),
                                 ),
                               ),
-                              if (_hasImage && _imgPath != "")
+                              if (_imgPath != "")
                                 Stack(
                                   children: [
                                     Container(
@@ -250,7 +255,7 @@ class _WriteScreenState extends ConsumerState<WriteScreen> {
                                     )
                                   ],
                                 ),
-                              if (_hasImage && _imgPath != "") Gaps.v10,
+                              if (_imgPath != "") Gaps.v10,
                               IconButton(
                                 onPressed: _onAttachmentTap,
                                 padding: EdgeInsets.zero,
@@ -274,6 +279,7 @@ class _WriteScreenState extends ConsumerState<WriteScreen> {
                 width: size.width,
                 child: BottomAppBar(
                     elevation: 0,
+                    color: Colors.white,
                     child: Row(
                       children: [
                         const Expanded(

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 import 'package:threads/constants/gaps.dart';
 import 'package:threads/utils.dart';
 import 'package:threads/repos/auth_repo.dart';
 import 'package:threads/screens/privacy_screen.dart';
 import 'package:threads/view_models/darkmode_config_vm.dart';
+import 'package:threads/view_models/users_vm.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   static String routeName = "settings";
@@ -125,7 +125,7 @@ class SettingsScreenState extends ConsumerState<SettingsScreen> {
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 10,
             ),
-            value: ref.watch(darkmodeConfigProvider).darkmode,
+            value: ref.watch(darkmodeConfigProvider).isDarkmode,
             onChanged: (value) =>
                 ref.read(darkmodeConfigProvider.notifier).setDarkmode(value),
           ),

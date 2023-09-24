@@ -1,38 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:threads/constants/sizes.dart';
+import 'package:threads/repos/post_repo.dart';
 import 'package:threads/utils.dart';
-import 'package:threads/widgets/bottom_sheet.dart';
+import 'package:threads/widgets/logo.dart';
 import 'package:threads/widgets/post.dart';
+import 'package:threads/widgets/custom_bottom_sheet.dart';
 
-class PostScreen extends StatelessWidget {
+class PostScreen extends ConsumerWidget {
+  const PostScreen({super.key});
+
   static String routeName = "";
-
-  PostScreen({super.key});
-
-  final imageList1 = [
-    {"img": "assets/images/blue.gif"}
-  ];
-
-  final imageList2 = [
-    {
-      "img": "assets/images/1.jpg",
-    },
-    {
-      "img": "assets/images/2.jpg",
-    },
-  ];
-
-  final imageList3 = [
-    {
-      "img": "assets/images/1.jpg",
-    },
-    {
-      "img": "assets/images/2.jpg",
-    },
-    {
-      "img": "assets/images/3.png",
-    },
-  ];
 
   void _onEllipsisTap(context) {
     showModalBottomSheet(
@@ -45,69 +23,64 @@ class PostScreen extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Logo(),
-          Post(
-            authorAvatar: "assets/images/cocomong.jpg",
-            authorName: "Cocomong",
-            readingTime: "6m",
-            postText: "I like his songs.",
-            imageList: imageList2,
-            repliesAvatarList: imageList3,
-            replies: 36,
-            likes: 391,
-            onEllipsisTap: () => _onEllipsisTap(context),
-          ),
-          Post(
-            authorAvatar: "assets/images/3.png",
-            authorName: "Jin",
-            readingTime: "1m",
-            postText: "Look at him kkkk",
-            imageList: imageList1,
-            repliesAvatarList: imageList2,
-            replies: 55,
-            likes: 185,
-            onEllipsisTap: () => _onEllipsisTap(context),
-          ),
-          Post(
-            authorAvatar: "assets/images/logo.png",
-            authorName: "Threads",
-            readingTime: "1m",
-            postText: "Welcome to Threads",
-            repliesAvatarList: imageList3,
-            replies: 99,
-            likes: 999,
-            isLastPost: true,
-            onEllipsisTap: () => _onEllipsisTap(context),
-          ),
+          ref.watch(postStream).when(
+                loading: () => const Padding(
+                  padding: EdgeInsets.only(
+                    top: Sizes.size48,
+                  ),
+                  child: Center(
+                    child: SizedBox(
+                      width: Sizes.size48,
+                      height: Sizes.size48,
+                      child: CircularProgressIndicator.adaptive(),
+                    ),
+                  ),
+                ),
+                error: (error, stackTrace) => Center(
+                  child: Column(
+                    children: [
+                      const Text("Thread를 불러올 수 없습니다."),
+                      Text("$error"),
+                    ],
+                  ),
+                ),
+                data: (posts) => ListView.separated(
+                  shrinkWrap: true,
+                  primary: false,
+                  itemCount: posts.length,
+                  itemBuilder: (context, index) {
+                    return Post(
+                      authorAvatar: posts[index].creatorAvatar,
+                      authorName: posts[index].creatorName,
+                      readingTime: getPostReadingTime(posts[index].text.length),
+                      postText: posts[index].text,
+                      postImageList: [posts[index].imgUrl],
+                      repliesAvatarList: const [],
+                      replies: posts[index].replies,
+                      likes: posts[index].likes,
+                      onEllipsisTap: () => _onEllipsisTap(context),
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: Sizes.size3,
+                      ),
+                      child: Divider(
+                        height: 0,
+                        thickness: 1,
+                      ),
+                    );
+                  },
+                ),
+              ),
         ],
-      ),
-    );
-  }
-}
-
-class Logo extends StatelessWidget {
-  const Logo({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: 50,
-        bottom: 20,
-      ),
-      child: Image(
-        image: AssetImage(isDarkMode(context)
-            ? "assets/images/logo_dark.png"
-            : "assets/images/logo.png"),
-        width: Sizes.size32,
       ),
     );
   }

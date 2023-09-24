@@ -30,8 +30,6 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        foregroundColor: Colors.black,
-        backgroundColor: Colors.white,
         elevation: 1,
         automaticallyImplyLeading: false,
         leadingWidth: 100,
@@ -73,7 +71,6 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
               children: [
                 FaIcon(
                   FontAwesomeIcons.lock,
-                  color: Colors.black,
                   size: 20,
                 ),
                 Gaps.h16,
@@ -129,9 +126,6 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                       Gaps.v10,
                       Text(
                         "Some settings, like restrict, apply to both Threads and Instagram and can be managed on Instagram.",
-                        style: TextStyle(
-                          color: Colors.black54,
-                        ),
                       )
                     ],
                   ),
@@ -185,7 +179,6 @@ class SettingsListTile extends StatelessWidget {
         right: 10,
       ),
       titleAlignment: ListTileTitleAlignment.center,
-      iconColor: Colors.black,
       leading: FaIcon(
         icon,
         size: 20,

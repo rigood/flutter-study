@@ -20,206 +20,197 @@ class ProfileScreen extends ConsumerStatefulWidget {
 }
 
 class _ProfileScreenState extends ConsumerState<ProfileScreen> {
-  final imageList2 = [
-    {
-      "img": "assets/images/1.jpg",
-    },
-    {
-      "img": "assets/images/2.jpg",
-    },
-  ];
-
   void _onSettingsTap() {
     context.pushNamed(SettingsScreen.routeName);
   }
 
   @override
   Widget build(BuildContext context) {
-    return ref.watch(usersProvider).when(
-          error: (error, stackTrace) => Center(
-            child: Text(
-              error.toString(),
-            ),
-          ),
-          loading: () => const Center(
-            child: CircularProgressIndicator.adaptive(),
-          ),
-          data: (data) => SafeArea(
-            child: DefaultTabController(
-              length: 2,
-              child: NestedScrollView(
-                headerSliverBuilder: (context, innerBoxIsScrolled) {
-                  return [
-                    SliverAppBar(
-                      toolbarHeight: 50,
-                      automaticallyImplyLeading: false,
-                      title: Row(
+    return SafeArea(
+      child: DefaultTabController(
+        length: 2,
+        child: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              SliverAppBar(
+                toolbarHeight: 50,
+                automaticallyImplyLeading: false,
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const FaIcon(
+                      FontAwesomeIcons.globe,
+                      size: 20,
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const FaIcon(FontAwesomeIcons.instagram),
+                        Gaps.h20,
+                        GestureDetector(
+                          onTap: _onSettingsTap,
+                          child: const FaIcon(
+                            FontAwesomeIcons.barsStaggered,
+                            size: 18,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const FaIcon(
-                            FontAwesomeIcons.globe,
-                            size: 20,
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const FaIcon(FontAwesomeIcons.instagram),
-                              Gaps.h20,
-                              GestureDetector(
-                                onTap: _onSettingsTap,
-                                child: const FaIcon(
-                                  FontAwesomeIcons.barsStaggered,
-                                  size: 18,
+                              Gaps.v10,
+                              Text(
+                                ref.watch(usersProvider).value?.name ??
+                                    "Anonymous",
+                                style: const TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
+                              Gaps.v5,
+                              Row(
+                                children: [
+                                  Text(ref.watch(usersProvider).value?.email ??
+                                      "anon@anon.com"),
+                                  Gaps.h5,
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 5,
+                                      horizontal: 10,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: isDarkMode(context)
+                                          ? Colors.grey.shade900
+                                          : Colors.grey.shade100,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: const Text(
+                                      "threads.net",
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              )
                             ],
+                          ),
+                          const CircleAvatar(
+                            radius: 28,
+                            backgroundImage:
+                                AssetImage("assets/images/cocomong.jpg"),
                           )
                         ],
                       ),
-                    ),
-                    SliverToBoxAdapter(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Gaps.v10,
-                                    Text(
-                                      data.name,
-                                      style: const TextStyle(
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Gaps.v5,
-                                    Row(
-                                      children: [
-                                        Text(data.email),
-                                        Gaps.h5,
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 5,
-                                            horizontal: 10,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: isDarkMode(context)
-                                                ? Colors.grey.shade900
-                                                : Colors.grey.shade100,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: const Text(
-                                            "threads.net",
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                              color: Colors.grey,
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                const CircleAvatar(
-                                  radius: 28,
-                                  backgroundImage:
-                                      AssetImage("assets/images/cocomong.jpg"),
-                                )
-                              ],
+                      Gaps.v10,
+                      Text(ref.watch(usersProvider).value?.name ?? "Anonymous"),
+                      Gaps.v10,
+                      const Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          RepliesAvatar(
+                            repliesAvatarList: [
+                              "assets/images/1.jpg",
+                              "assets/images/2.jpg",
+                            ],
+                          ),
+                          Gaps.h10,
+                          Text(
+                            "2 followers",
+                            style: TextStyle(
+                              color: Colors.grey,
                             ),
-                            Gaps.v10,
-                            Text(data.bio),
-                            Gaps.v10,
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                RepliesAvatar(
-                                  repliesAvatarList: imageList2,
-                                ),
-                                Gaps.h10,
-                                const Text(
-                                  "2 followers",
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Gaps.v10,
-                            const Row(
-                              children: [
-                                ProfileButton(
-                                  text: "Edit profile",
-                                ),
-                                Gaps.h10,
-                                ProfileButton(
-                                  text: "Share profile",
-                                ),
-                              ],
-                            ),
-                            Gaps.v10,
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ),
-                    SliverPersistentHeader(
-                      delegate: ProfileTabBar(),
-                      pinned: true,
-                    ),
-                  ];
-                },
-                body: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 20,
-                  ),
-                  child: TabBarView(
-                    children: [
-                      ListView.builder(
-                        itemCount: 3,
-                        itemBuilder: (context, index) {
-                          return Post(
-                            authorAvatar: "assets/images/cocomong.jpg",
-                            authorName: "Cocomong",
-                            readingTime: "6m",
-                            postText: "I like his songs.",
-                            imageList: imageList2,
-                            repliesAvatarList: imageList2,
-                            replies: 36,
-                            likes: 391,
-                            onEllipsisTap: () {},
-                          );
-                        },
+                      Gaps.v10,
+                      const Row(
+                        children: [
+                          ProfileButton(
+                            text: "Edit profile",
+                          ),
+                          Gaps.h10,
+                          ProfileButton(
+                            text: "Share profile",
+                          ),
+                        ],
                       ),
-                      ListView.builder(
-                        itemCount: 3,
-                        itemBuilder: (context, index) {
-                          return Post(
-                            authorAvatar: "assets/images/1.jpg",
-                            authorName: "Jin",
-                            readingTime: "1m",
-                            postText: "Look at him kkkk",
-                            repliesAvatarList: imageList2,
-                            replies: 55,
-                            likes: 185,
-                            onEllipsisTap: () {},
-                          );
-                        },
-                      ),
+                      Gaps.v10,
                     ],
                   ),
                 ),
               ),
+              SliverPersistentHeader(
+                delegate: ProfileTabBar(),
+                pinned: true,
+              ),
+            ];
+          },
+          body: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 20,
+            ),
+            child: TabBarView(
+              children: [
+                ListView.builder(
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return Post(
+                      authorAvatar: "assets/images/cocomong.jpg",
+                      authorName: "Cocomong",
+                      readingTime: "6m",
+                      postText: "I like his songs.",
+                      postImageList: const [],
+                      repliesAvatarList: const [
+                        "assets/images/1.jpg",
+                        "assets/images/2.jpg"
+                      ],
+                      replies: 36,
+                      likes: 391,
+                      onEllipsisTap: () {},
+                    );
+                  },
+                ),
+                ListView.builder(
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return Post(
+                      authorAvatar: "assets/images/1.jpg",
+                      authorName: "Jin",
+                      readingTime: "1m",
+                      postText: "Look at him kkkk",
+                      postImageList: const [],
+                      repliesAvatarList: const [
+                        "assets/images/cocomong.jpg",
+                      ],
+                      replies: 55,
+                      likes: 185,
+                      onEllipsisTap: () {},
+                    );
+                  },
+                ),
+              ],
             ),
           ),
-        );
+        ),
+      ),
+    );
   }
 }
 

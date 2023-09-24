@@ -96,8 +96,8 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                           height: 50,
                           fit: BoxFit.contain,
                           image: AssetImage(isDarkMode(context)
-                              ? "assets/images/logo.png"
-                              : "assets/images/logo_dark.png"),
+                              ? "assets/images/logo/logo_lightmode.png"
+                              : "assets/images/logo/logo_darkmode.png"),
                         ),
                       ),
                     ),

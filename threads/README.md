@@ -158,4 +158,32 @@
   - 계정생성, 로그인 화면에는 이메일, 비밀번호를 입력받는 양식이 있어야함
   - 사용자가 양식을 제출하면 Firebase 인증을 통해 계정생성/로그인 후 홈 화면으로 이동해야함
 
-  <img src="./demo9.gif"  width="300"/>
+- [🚀 구현 영상](https://imgur.com/a/4sBfjsE)
+
+</br>
+
+# Code Challenge [Real Data]
+
+- Requirements
+
+  - Write Screen
+    - 글에 이미지 첨부 기능 구현
+    - 이미지는 Firebase Storage에 저장
+    - 글은 Firebase FireStore에 저장
+  - Home Screen
+    - Firebase FireStore에서 글 불러오기
+    - Firebase Storage에서 이미지 불러오기
+
+- [🚀 구현 영상](https://imgur.com/a/qbyOylK)
+- [🚀 구현 영상(글 업로드 후 목록에 반영되도록 보완)](https://imgur.com/a/9WkIfoW)
+
+</br>
+
+# Code Challenge [Search posts]
+
+- Requirements
+
+  - 검색창에 입력한 텍스트를 기준으로 필터링
+  - 글은 Firebase FireStore에서 불러오기
+
+- [🚀 구현 영상](https://imgur.com/a/8lTzeRx)

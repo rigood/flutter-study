@@ -7,11 +7,11 @@ class DarkmodeConfigRepository {
 
   DarkmodeConfigRepository(this._preferences);
 
-  Future<void> setDarkmode(bool value) async {
-    _preferences.setBool(_darkmode, value);
-  }
-
   bool isDarkmode() {
     return _preferences.getBool(_darkmode) ?? false;
+  }
+
+  Future<void> setDarkmode(bool value) async {
+    _preferences.setBool(_darkmode, value);
   }
 }

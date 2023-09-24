@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:threads/constants/sizes.dart';
 
 class AuthorAvatar extends StatelessWidget {
   const AuthorAvatar({
     super.key,
     required this.authorAvatar,
-    this.avatarRadius = 20,
+    this.avatarRadius = 16,
     this.icon = FontAwesomeIcons.plus,
     this.iconBackgroundColor = Colors.black,
   });
@@ -20,27 +21,27 @@ class AuthorAvatar extends StatelessWidget {
     return Stack(
       children: [
         CircleAvatar(
-          radius: avatarRadius ?? 20,
-          backgroundImage: AssetImage(authorAvatar),
+          radius: avatarRadius,
           backgroundColor: Colors.grey,
+          backgroundImage:
+              authorAvatar.isNotEmpty ? AssetImage(authorAvatar) : null,
         ),
         Positioned(
-          bottom: -1,
-          right: -1,
-          child: Container(
-            padding: const EdgeInsets.all(3),
-            decoration: BoxDecoration(
-              color: iconBackgroundColor,
-              borderRadius: BorderRadius.circular(50),
-              border: Border.all(
+          width: avatarRadius! - 1,
+          height: avatarRadius! - 1,
+          bottom: 0,
+          right: 0,
+          child: CircleAvatar(
+            backgroundColor: Colors.white,
+            radius: avatarRadius! / 2,
+            child: CircleAvatar(
+              backgroundColor: iconBackgroundColor,
+              radius: avatarRadius! / 2 - Sizes.size2,
+              child: FaIcon(
+                icon,
+                size: avatarRadius! / 2,
                 color: Colors.white,
-                width: 2,
               ),
-            ),
-            child: FaIcon(
-              icon,
-              size: 10,
-              color: Colors.white,
             ),
           ),
         )

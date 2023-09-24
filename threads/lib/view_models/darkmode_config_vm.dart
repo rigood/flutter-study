@@ -7,17 +7,17 @@ class DarkmodeConfigViewModel extends Notifier<DarkmodeConfigModel> {
 
   DarkmodeConfigViewModel(this._repository);
 
-  void setDarkmode(bool value) {
-    _repository.setDarkmode(value);
-    state = DarkmodeConfigModel(
-      darkmode: value,
-    );
-  }
-
   @override
   DarkmodeConfigModel build() {
     return DarkmodeConfigModel(
-      darkmode: _repository.isDarkmode(),
+      isDarkmode: _repository.isDarkmode(),
+    );
+  }
+
+  void setDarkmode(bool value) {
+    _repository.setDarkmode(value);
+    state = DarkmodeConfigModel(
+      isDarkmode: value,
     );
   }
 }

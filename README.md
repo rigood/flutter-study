@@ -8,6 +8,7 @@
 - [Week 4](weeks/week4.md)
 - [Week 5](weeks/week5.md)
 - [Week 6](weeks/week6.md)
+- [Week 7](weeks/week7.md)
 
 <br>
 
@@ -184,7 +185,8 @@
 
 </br>
 
-### Week 7
+<details>
+<summary><b>Week 7</b></summary>
 
 - 2023-09-14 (목)
 
@@ -197,5 +199,22 @@
   - [x] [코드챌린지 과제 (Riverpod)](./threads/README.md/#code-challenge-riverpod)
 
 - 2023-09-16 (토)
+
   - [x] [틱톡클론 강의 23 Firebase setup](./TIL/tiktok_23_firebase_setup.md)
   - [x] [코드챌린지 과제 (Authentication)](./threads/README.md/#code-challenge-authentication)
+
+- 2023-09-20 (수)
+  - [x] [코드챌린지 과제 (Real Data)](./threads/README.md/#code-challenge-real-data)
+
+</details>
+
+</br>
+
+### Week 8
+
+- 2023-09-22 (금)
+
+  - [x] [코드챌린지 과제 (Search Posts)](./threads/README.md/#code-challenge-search-posts)
+
+- 2023-09-23 (토)
+  - [x] [코드챌린지 과제 (Final Project Setup)](https://github.com/rigood/flutter-final/commits/main)
