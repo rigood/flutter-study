@@ -9,6 +9,8 @@
 - [Week 5](weeks/week5.md)
 - [Week 6](weeks/week6.md)
 - [Week 7](weeks/week7.md)
+- [Week 8](weeks/week8.md)
+- [Week 9](weeks/week9.md)
 
 <br>
 
@@ -210,11 +212,39 @@
 
 </br>
 
-### Week 8
+<details>
+<summary><b>Week 8</b></summary>
 
 - 2023-09-22 (금)
 
   - [x] [코드챌린지 과제 (Search Posts)](./threads/README.md/#code-challenge-search-posts)
 
 - 2023-09-23 (토)
+
   - [x] [코드챌린지 과제 (Final Project Setup)](https://github.com/rigood/flutter-final/commits/main)
+
+- 2023-09-27 (수)
+
+  - [x] 졸업과제 Auth 파트 구현
+
+</details>
+
+</br>
+
+### Week 9
+
+- 2023-09-30 (토)
+
+  - [x] 졸업과제 Post 등록 파트 구현
+
+- 2023-10-01 (일)
+
+  - [x] 졸업과제 수정, 리팩토링
+
+- 2023-10-02 (월)
+
+  - [x] 졸업과제 Post 삭제 기능, 목록 UI 구현
+
+- 2023-10-03 (화)
+
+  - [x] 코드챌린지 과제 (Implicit Animation)
