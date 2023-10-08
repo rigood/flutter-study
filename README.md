@@ -231,7 +231,8 @@
 
 </br>
 
-### Week 9
+<details>
+<summary><b>Week 9</b></summary>
 
 - 2023-09-30 (토)
 
@@ -248,3 +249,22 @@
 - 2023-10-03 (화)
 
   - [x] 코드챌린지 과제 (Implicit Animation)
+
+</details>
+
+</br>
+
+### Week 10
+
+- 2023-10-03 (화)
+
+  - [x] 코드챌린지 과제 (Implicit Animations)
+
+- 2023-10-05 (목)
+
+  - [x] 코드챌린지 과제 (Explicit Animations)
+
+- 2023-10-08 (일)
+  - [x] Mood Tree 기능 추가 및 리팩토링
+- 2023-10-09 (월)
+  - [x] 코드챌린지 과제 (Custom painter)

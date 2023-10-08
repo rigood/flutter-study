@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:animation/screens/implicit_animations_screen.dart';
 import 'package:animation/screens/explicit_animations_screen.dart';
+import 'package:animation/screens/explicit_animations_challenge.dart';
+import 'package:animation/screens/apple_watch_screen.dart';
+import 'package:animation/screens/pomodoro_screen.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
@@ -18,7 +21,9 @@ class MenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("플러터 애니메이션 연습"),
+          title: const Text(
+            "플러터 애니메이션 연습",
+          ),
         ),
         body: Center(
           child: Column(
@@ -36,6 +41,27 @@ class MenuScreen extends StatelessWidget {
                   const ExplicitAnimationsScreen(),
                 ),
                 child: const Text("Explicit Animation"),
+              ),
+              ElevatedButton(
+                onPressed: () => _goToPage(
+                  context,
+                  const ExplicitAnimationsChallenge(),
+                ),
+                child: const Text("Explicit Animation Challenge"),
+              ),
+              ElevatedButton(
+                onPressed: () => _goToPage(
+                  context,
+                  const AppleWatchScreen(),
+                ),
+                child: const Text("Apple Watch"),
+              ),
+              ElevatedButton(
+                onPressed: () => _goToPage(
+                  context,
+                  const PomodoroScreen(),
+                ),
+                child: const Text("Pomodoro"),
               ),
             ],
           ),

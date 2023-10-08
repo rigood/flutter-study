@@ -102,18 +102,9 @@ class _ExplicitAnimationsScreenState extends State<ExplicitAnimationsScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff2B2E2D),
       appBar: AppBar(
-        iconTheme: const IconThemeData(
-          color: Colors.white,
-        ),
-        backgroundColor: const Color(0xff2B2E2D),
-        centerTitle: true,
         title: const Text(
           "Explicit Animations",
-          style: TextStyle(
-            color: Colors.white,
-          ),
         ),
       ),
       body: Column(
