@@ -265,6 +265,12 @@
   - [x] 코드챌린지 과제 (Explicit Animations)
 
 - 2023-10-08 (일)
+
   - [x] Mood Tree 기능 추가 및 리팩토링
+
 - 2023-10-09 (월)
+
   - [x] 코드챌린지 과제 (Custom painter)
+
+- 2023-10-10 (화)
+  - [x] 코드챌린지 과제 (Flashcards App)

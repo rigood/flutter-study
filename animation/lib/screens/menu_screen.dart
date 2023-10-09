@@ -4,6 +4,8 @@ import 'package:animation/screens/explicit_animations_screen.dart';
 import 'package:animation/screens/explicit_animations_challenge.dart';
 import 'package:animation/screens/apple_watch_screen.dart';
 import 'package:animation/screens/pomodoro_screen.dart';
+import 'package:animation/screens/swiping_cards_screen.dart';
+import 'package:animation/screens/flashcards_screen.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
@@ -62,6 +64,20 @@ class MenuScreen extends StatelessWidget {
                   const PomodoroScreen(),
                 ),
                 child: const Text("Pomodoro"),
+              ),
+              ElevatedButton(
+                onPressed: () => _goToPage(
+                  context,
+                  const SwipingCardsScreen(),
+                ),
+                child: const Text("Swiping Cards"),
+              ),
+              ElevatedButton(
+                onPressed: () => _goToPage(
+                  context,
+                  const FlashCardsScreen(),
+                ),
+                child: const Text("Flashcards"),
               ),
             ],
           ),
