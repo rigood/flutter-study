@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:onboarding/features/auth/confirmation_code_screen.dart';
-import 'package:onboarding/features/auth/create_account_screen.dart';
-import 'package:onboarding/features/auth/login_screen.dart';
 
 void main() {
   runApp(const MyApp());

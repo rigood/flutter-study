@@ -1,12 +1,11 @@
 import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:threads/models/user_profile_model.dart';
 import 'package:threads/repos/auth_repo.dart';
 import 'package:threads/repos/user_repo.dart';
 
-class UsersViewModel extends AsyncNotifier<UserProfileModel> {
+class UsersViewModel extends AutoDisposeAsyncNotifier<UserProfileModel> {
   late final UserRepository _userRepository;
   late final AuthenticationRepository _authenticationRepository;
 
@@ -46,6 +45,7 @@ class UsersViewModel extends AsyncNotifier<UserProfileModel> {
   }
 }
 
-final usersProvider = AsyncNotifierProvider<UsersViewModel, UserProfileModel>(
+final usersProvider =
+    AsyncNotifierProvider.autoDispose<UsersViewModel, UserProfileModel>(
   () => UsersViewModel(),
 );

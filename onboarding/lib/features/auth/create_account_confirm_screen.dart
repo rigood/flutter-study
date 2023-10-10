@@ -136,9 +136,7 @@ class _CreateAccountScreenState extends State<CreateAccountConfirmScreen> {
     if (_isFormValid) {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => ConfirmationCodeScreen(
-            email: _email,
-          ),
+          builder: (context) => const ConfirmationCodeScreen(),
         ),
       );
     }

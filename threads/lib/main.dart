@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:threads/firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:threads/logger.dart';
 import 'package:threads/repos/darkmode_config_repo.dart';
 import 'package:threads/view_models/darkmode_config_vm.dart';
 import 'package:threads/router.dart';
@@ -19,6 +20,7 @@ void main() async {
 
   runApp(
     ProviderScope(
+      observers: [Logger()],
       overrides: [
         darkmodeConfigProvider
             .overrideWith(() => DarkmodeConfigViewModel(repository))

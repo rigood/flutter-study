@@ -7,7 +7,6 @@ import 'package:threads/utils.dart';
 import 'package:threads/repos/auth_repo.dart';
 import 'package:threads/screens/privacy_screen.dart';
 import 'package:threads/view_models/darkmode_config_vm.dart';
-import 'package:threads/view_models/users_vm.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   static String routeName = "settings";
@@ -144,11 +143,6 @@ class SettingsScreenState extends ConsumerState<SettingsScreen> {
                     ),
                   ),
                 ),
-                // const SizedBox(
-                //   width: 20,
-                //   height: 20,
-                //   child: CircularProgressIndicator.adaptive(),
-                // ),
               ],
             ),
           )
