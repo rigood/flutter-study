@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:animation/screens/implicit_animations_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:animation/screens/implicit_animations_challenge.dart';
 import 'package:animation/screens/explicit_animations_screen.dart';
 import 'package:animation/screens/explicit_animations_challenge.dart';
 import 'package:animation/screens/apple_watch_screen.dart';
@@ -35,21 +36,28 @@ class MenuScreen extends StatelessWidget {
                   context,
                   const ImplicitAnimationsScreen(),
                 ),
-                child: const Text("Implicit Animation"),
+                child: const Text("Implicit Animations"),
+              ),
+              ElevatedButton(
+                onPressed: () => _goToPage(
+                  context,
+                  const ImplicitAnimationsChallenge(),
+                ),
+                child: const Text("Implicit Animations Challenge"),
               ),
               ElevatedButton(
                 onPressed: () => _goToPage(
                   context,
                   const ExplicitAnimationsScreen(),
                 ),
-                child: const Text("Explicit Animation"),
+                child: const Text("Explicit Animations"),
               ),
               ElevatedButton(
                 onPressed: () => _goToPage(
                   context,
                   const ExplicitAnimationsChallenge(),
                 ),
-                child: const Text("Explicit Animation Challenge"),
+                child: const Text("Explicit Animations Challenge"),
               ),
               ElevatedButton(
                 onPressed: () => _goToPage(
