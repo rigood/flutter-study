@@ -11,6 +11,7 @@
 - [Week 7](weeks/week7.md)
 - [Week 8](weeks/week8.md)
 - [Week 9](weeks/week9.md)
+- [Week 10](weeks/week10.md)
 
 <br>
 
@@ -254,7 +255,8 @@
 
 </br>
 
-### Week 10
+<details>
+<summary><b>Week 10</b></summary>
 
 - 2023-10-03 (화)
 
@@ -275,3 +277,8 @@
 - 2023-10-10 (화)
   - [x] 코드챌린지 과제 (Flashcards App)
   - [x] threads 앱 코드 수정 (로그아웃 후에도 기존 유저의 프로필이 남아있는 문제 -> usersProivder를 autodispose로 변경)
+  - [x] 코드챌린지 과제 보완 (Implicit Animations)
+
+</details>
+
+</br>
