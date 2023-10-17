@@ -1,5 +1,5 @@
-import 'package:animation/screens/implicit_animations_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:animation/screens/implicit_animations_screen.dart';
 import 'package:animation/screens/implicit_animations_challenge.dart';
 import 'package:animation/screens/explicit_animations_screen.dart';
 import 'package:animation/screens/explicit_animations_challenge.dart';
@@ -7,6 +7,8 @@ import 'package:animation/screens/apple_watch_screen.dart';
 import 'package:animation/screens/pomodoro_screen.dart';
 import 'package:animation/screens/swiping_cards_screen.dart';
 import 'package:animation/screens/flashcards_screen.dart';
+import 'package:animation/screens/final_screen.dart';
+import 'package:animation/screens/final_splash_screen.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
@@ -86,6 +88,20 @@ class MenuScreen extends StatelessWidget {
                   const FlashCardsScreen(),
                 ),
                 child: const Text("Flashcards"),
+              ),
+              ElevatedButton(
+                onPressed: () => _goToPage(
+                  context,
+                  const FinalScreen(),
+                ),
+                child: const Text("Final"),
+              ),
+              ElevatedButton(
+                onPressed: () => _goToPage(
+                  context,
+                  const FinalSplashScreen(),
+                ),
+                child: const Text("Final Splash"),
               ),
             ],
           ),
