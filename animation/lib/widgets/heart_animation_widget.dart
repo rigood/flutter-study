@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class HeartAnimationWidget extends StatefulWidget {
   final Widget child;
-  final bool isAnimationg;
+  final bool isAnimating;
   final bool alwaysAnimate;
   final Duration duration;
   final VoidCallback? onEnd;
@@ -10,7 +10,7 @@ class HeartAnimationWidget extends StatefulWidget {
   const HeartAnimationWidget({
     super.key,
     required this.child,
-    required this.isAnimationg,
+    required this.isAnimating,
     this.alwaysAnimate = false,
     this.duration = const Duration(milliseconds: 150),
     this.onEnd,
@@ -44,13 +44,13 @@ class _HeartAnimationWidgetState extends State<HeartAnimationWidget>
   void didUpdateWidget(covariant HeartAnimationWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    if (widget.isAnimationg != oldWidget.isAnimationg) {
+    if (widget.isAnimating != oldWidget.isAnimating) {
       doAnimation();
     }
   }
 
   Future doAnimation() async {
-    if (widget.isAnimationg || widget.alwaysAnimate) {
+    if (widget.isAnimating || widget.alwaysAnimate) {
       await _animationController.forward();
       await _animationController.reverse();
 

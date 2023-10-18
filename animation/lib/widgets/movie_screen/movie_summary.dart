@@ -12,12 +12,14 @@ class MovieSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       summary,
+      maxLines: 4,
+      overflow: TextOverflow.ellipsis,
       style: TextStyle(
+        color: Colors.grey.shade800,
+        fontSize: 11.5,
         fontFamily: "PretendardLight",
-        fontSize: 14,
-        color: Colors.white.withOpacity(0.8),
-        height: 1.7,
         letterSpacing: -0.2,
+        height: 1.5,
       ),
     );
   }

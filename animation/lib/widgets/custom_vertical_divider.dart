@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class CustomVerticalDivider extends StatelessWidget {
   final double? height;
-  final Color color;
+  final Color? color;
 
   const CustomVerticalDivider({
     super.key,
     this.height,
-    required this.color,
+    this.color,
   });
 
   @override

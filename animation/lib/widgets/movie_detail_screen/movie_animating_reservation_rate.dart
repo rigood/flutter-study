@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MovieGoldenEgg extends StatelessWidget {
+class MovieAnimatingReservationRate extends StatelessWidget {
   final bool isAnimating;
-  final int goldenEgg;
+  final double reservationRate;
 
-  const MovieGoldenEgg({
+  const MovieAnimatingReservationRate({
     super.key,
     required this.isAnimating,
-    required this.goldenEgg,
+    required this.reservationRate,
   });
 
   @override
@@ -15,14 +15,14 @@ class MovieGoldenEgg extends StatelessWidget {
     return TweenAnimationBuilder(
       tween: Tween(
         begin: 0.0,
-        end: isAnimating ? goldenEgg : 0,
+        end: isAnimating ? reservationRate : 0,
       ),
       duration: const Duration(seconds: 2),
       builder: (context, value, child) {
         return Text(
-          "${value.ceil().toString()}%",
+          "예매율 ${value.toStringAsFixed(1)}%",
           style: const TextStyle(
-            fontSize: 16,
+            fontSize: 14,
             color: Colors.white,
           ),
         );

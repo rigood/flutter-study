@@ -1,17 +1,26 @@
-import 'package:animation/widgets/custom_vertical_divider.dart';
-import 'package:animation/widgets/movie_detail_screen/movie_egg_image.dart';
-import 'package:animation/widgets/movie_detail_screen/movie_golden_egg.dart';
-import 'package:animation/widgets/movie_detail_screen/movie_reservation_rate.dart';
-import 'package:animation/widgets/movie_detail_screen/movie_summary.dart';
-import 'package:animation/widgets/movie_detail_screen/movie_title.dart';
-import 'package:animation/widgets/movie_detail_screen/movie_youtube_thumbnail.dart';
 import 'package:flutter/material.dart';
 import 'package:animation/constants/gaps.dart';
 import 'package:animation/data/movies.dart';
 import 'package:animation/widgets/custom_app_bar.dart';
 import 'package:animation/widgets/poster_blur_background.dart';
-import 'package:animation/widgets/heart_animation_widget.dart';
+import 'package:animation/widgets/movie_egg_image.dart';
+import 'package:animation/widgets/custom_vertical_divider.dart';
+import 'package:animation/widgets/movie_detail_screen/movie_detail_title.dart';
 import 'package:animation/widgets/movie_detail_screen/movie_radar_chart.dart';
+import 'package:animation/widgets/movie_detail_screen/movie_animating_golden_egg.dart';
+import 'package:animation/widgets/movie_detail_screen/movie_animating_reservation_rate.dart';
+import 'package:animation/widgets/movie_detail_screen/movie_detail_summary.dart';
+import 'package:animation/widgets/movie_detail_screen/movie_youtube_thumbnail.dart';
+import 'package:animation/widgets/movie_screen/movie_title.dart';
+import 'package:animation/widgets/movie_screen/movie_summary.dart';
+import 'package:animation/widgets/movie_screen/movie_golden_egg.dart';
+import 'package:animation/widgets/movie_screen/movie_reservation_button.dart';
+import 'package:animation/widgets/movie_screen/movie_reservation_rate.dart';
+import 'package:animation/widgets/movie_screen/movie_poster.dart';
+import 'package:animation/widgets/movie_screen/movie_heart.dart';
+import 'package:animation/widgets/movie_screen/movie_rating.dart';
+import 'package:animation/widgets/movie_screen/movie_rank.dart';
+import 'package:animation/widgets/movie_screen/movie_like_button.dart';
 
 class FinalScreen extends StatefulWidget {
   const FinalScreen({super.key});
@@ -82,9 +91,28 @@ class _FinalScreenState extends State<FinalScreen> {
     });
   }
 
-  void _onHorizontalPageChanged(newPage) {
+  void _onHorizontalPageChanged(int newPage) {
     setState(() {
       _currentHorizontalPage = newPage;
+    });
+  }
+
+  void _toggleIsLiked(int index) {
+    setState(() {
+      _isLikedList[index] = !_isLikedList[index];
+    });
+  }
+
+  void _onPosterDoubleTap(int index) {
+    setState(() {
+      _isHeartAnimatingList[index] = true;
+      _isLikedList[index] = true;
+    });
+  }
+
+  void _onHeartAnimationEnd(int index) {
+    setState(() {
+      _isHeartAnimatingList[index] = false;
     });
   }
 
@@ -123,7 +151,7 @@ class _FinalScreenState extends State<FinalScreen> {
                   scrollDirection: Axis.vertical,
                   child: Column(
                     children: [
-                      MovieTitle(
+                      MovieDetailTitle(
                         title: "${movies[_currentHorizontalPage]["title"]}",
                       ),
                       Gaps.v40,
@@ -148,7 +176,7 @@ class _FinalScreenState extends State<FinalScreen> {
                                 ["eggImagePath"]! as String,
                           ),
                           Gaps.h4,
-                          MovieGoldenEgg(
+                          MovieAnimatingGoldenEgg(
                             isAnimating: _isDetailScreenAnimating,
                             goldenEgg: movies[_currentHorizontalPage]
                                 ["goldenEgg"] as int,
@@ -159,7 +187,7 @@ class _FinalScreenState extends State<FinalScreen> {
                             height: 15,
                           ),
                           Gaps.h5,
-                          MovieReservationRate(
+                          MovieAnimatingReservationRate(
                             isAnimating: _isDetailScreenAnimating,
                             reservationRate: movies[_currentHorizontalPage]
                                 ["reservationRate"] as double,
@@ -167,7 +195,7 @@ class _FinalScreenState extends State<FinalScreen> {
                         ],
                       ),
                       Gaps.v32,
-                      MovieSummary(
+                      MovieDetailSummary(
                           summary:
                               "${movies[_currentHorizontalPage]["summary"]}"),
                       Gaps.v32,
@@ -223,31 +251,14 @@ class _FinalScreenState extends State<FinalScreen> {
                                               const SizedBox(
                                                 height: 210,
                                               ),
-                                              Text(
-                                                "${movies[index]["title"]}",
-                                                overflow: TextOverflow.ellipsis,
-                                                textAlign: TextAlign.center,
-                                                style: const TextStyle(
-                                                  fontSize: 28,
-                                                  fontFamily:
-                                                      "PretendardSemibold",
-                                                  fontWeight: FontWeight.w600,
-                                                  height: 1.3,
-                                                  letterSpacing: -1,
-                                                ),
+                                              MovieTitle(
+                                                title:
+                                                    "${movies[index]["title"]}",
                                               ),
                                               Gaps.v12,
-                                              Text(
-                                                "${movies[index]["summary"]}",
-                                                maxLines: 4,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                  color: Colors.grey.shade800,
-                                                  fontSize: 11.5,
-                                                  fontFamily: "PretendardLight",
-                                                  letterSpacing: -0.2,
-                                                  height: 1.5,
-                                                ),
+                                              MovieSummary(
+                                                summary:
+                                                    "${movies[index]["summary"]}",
                                               ),
                                               Gaps.v16,
                                               Row(
@@ -255,67 +266,33 @@ class _FinalScreenState extends State<FinalScreen> {
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
                                                 children: [
-                                                  Image.asset(
-                                                    movies[index]
+                                                  MovieEggImage(
+                                                    eggImagePath: movies[index]
                                                             ["eggImagePath"]!
                                                         as String,
-                                                    width: 16,
-                                                    height: 16,
+                                                    size: 16,
                                                   ),
                                                   Gaps.h4,
-                                                  Text(
-                                                    "${movies[index]["goldenEgg"]!}%",
-                                                    style: const TextStyle(
-                                                      fontSize: 12,
-                                                      fontFamily:
-                                                          "PretendardMedium",
-                                                      letterSpacing: -0.5,
-                                                    ),
+                                                  MovieGoldenEgg(
+                                                    goldenEgg: movies[index]
+                                                        ["goldenEgg"]! as int,
                                                   ),
                                                   Gaps.h5,
-                                                  const Text("｜"),
-                                                  Gaps.h5,
-                                                  Text(
-                                                    "예매율 ${movies[index]["reservationRate"]!}%",
-                                                    style: const TextStyle(
-                                                      fontSize: 12,
-                                                      fontFamily:
-                                                          "PretendardMedium",
-                                                      letterSpacing: -0.5,
-                                                    ),
+                                                  const CustomVerticalDivider(
+                                                    height: 12,
                                                   ),
+                                                  Gaps.h5,
+                                                  MovieReservationRate(
+                                                      reservationRate: movies[
+                                                                  index][
+                                                              "reservationRate"]!
+                                                          as double),
                                                 ],
                                               )
                                             ],
                                           ),
                                         ),
-                                        Positioned(
-                                          bottom: 0,
-                                          left: 0,
-                                          right: 0,
-                                          child: Container(
-                                            padding: const EdgeInsets.symmetric(
-                                              vertical: 14,
-                                            ),
-                                            decoration: const BoxDecoration(
-                                              gradient: LinearGradient(
-                                                begin: Alignment.centerLeft,
-                                                end: Alignment.centerRight,
-                                                colors: [
-                                                  Color(0xffFB4657),
-                                                  Color(0xffFF7156),
-                                                ],
-                                              ),
-                                            ),
-                                            child: const Text(
-                                              "예매하기",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
+                                        const MovieReservationButton(),
                                       ],
                                     ),
                                   ),
@@ -325,138 +302,32 @@ class _FinalScreenState extends State<FinalScreen> {
                                   child: Transform.scale(
                                     scale: 1 - (difference * 0.3),
                                     child: GestureDetector(
-                                      onDoubleTap: () {
-                                        setState(() {
-                                          _isHeartAnimatingList[index] = true;
-                                          _isLikedList[index] = true;
-                                        });
-                                      },
+                                      onDoubleTap: () =>
+                                          _onPosterDoubleTap(index),
                                       child: Stack(
                                         children: [
-                                          Container(
-                                            clipBehavior: Clip.hardEdge,
-                                            width: 200,
-                                            height: 300,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/covers/${index + 1}.jpg"),
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                gradient: LinearGradient(
-                                                  begin: FractionalOffset
-                                                      .topCenter,
-                                                  end: FractionalOffset
-                                                      .bottomCenter,
-                                                  colors: [
-                                                    Colors.black.withOpacity(0),
-                                                    Colors.black
-                                                        .withOpacity(0.8),
-                                                  ],
-                                                  stops: const [0.3, 1.0],
-                                                ),
-                                              ),
-                                            ),
+                                          MoviePoster(
+                                            posterPath:
+                                                "assets/covers/${index + 1}.jpg",
                                           ),
-                                          Positioned(
-                                            top: 0,
-                                            bottom: 0,
-                                            left: 0,
-                                            right: 0,
-                                            child: Opacity(
-                                              opacity:
-                                                  _isHeartAnimatingList[index]
-                                                      ? 1
-                                                      : 0,
-                                              child: HeartAnimationWidget(
-                                                isAnimationg:
-                                                    _isHeartAnimatingList[
-                                                        index],
-                                                duration: const Duration(
-                                                  milliseconds: 700,
-                                                ),
-                                                onEnd: () {
-                                                  setState(() {
-                                                    _isHeartAnimatingList[
-                                                        index] = false;
-                                                  });
-                                                },
-                                                child: const Icon(
-                                                  Icons.favorite,
-                                                  size: 80,
-                                                  color: Color(0xffED3124),
-                                                ),
-                                              ),
-                                            ),
+                                          MovieHeart(
+                                            isAnimating:
+                                                _isHeartAnimatingList[index],
+                                            onEnd: () =>
+                                                _onHeartAnimationEnd(index),
                                           ),
-                                          Positioned(
-                                            bottom: -16,
-                                            left: 4,
-                                            child: Text(
-                                              "${movies[index]["rank"]}",
-                                              style: TextStyle(
-                                                color: Colors.white
-                                                    .withOpacity(0.7),
-                                                fontSize: 56,
-                                                fontStyle: FontStyle.italic,
-                                                fontFamily: "OA",
-                                              ),
-                                            ),
+                                          MovieRating(
+                                            color: movies[index]["ratingColor"]!
+                                                as Color,
+                                            rating: movies[index]["rating"]!
+                                                as String,
                                           ),
-                                          Positioned(
-                                            bottom: 0,
-                                            right: 0,
-                                            child: HeartAnimationWidget(
-                                              isAnimationg: _isLikedList[index],
-                                              alwaysAnimate: true,
-                                              child: IconButton(
-                                                onPressed: () {
-                                                  setState(() {
-                                                    _isLikedList[index] =
-                                                        !_isLikedList[index];
-                                                  });
-                                                },
-                                                icon: Icon(
-                                                  _isLikedList[index]
-                                                      ? Icons.favorite
-                                                      : Icons.favorite_outline,
-                                                  color: _isLikedList[index]
-                                                      ? Colors.red
-                                                      : Colors.white,
-                                                ),
-                                              ),
-                                            ),
+                                          MovieRank(
+                                            rank: movies[index]["rank"]! as int,
                                           ),
-                                          Positioned(
-                                            top: 8,
-                                            right: 8,
-                                            child: Container(
-                                              width: 24,
-                                              height: 24,
-                                              decoration: BoxDecoration(
-                                                color: movies[index]
-                                                    ["ratingColor"]! as Color,
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                              ),
-                                              child: Center(
-                                                child: Text(
-                                                  "${movies[index]["rating"]}",
-                                                  style: const TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 18,
-                                                    fontWeight: FontWeight.w900,
-                                                    fontFamily:
-                                                        "PretendardSemibold",
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
+                                          MovieLikeButton(
+                                            isLiked: _isLikedList[index],
+                                            onTap: () => _toggleIsLiked(index),
                                           ),
                                         ],
                                       ),
